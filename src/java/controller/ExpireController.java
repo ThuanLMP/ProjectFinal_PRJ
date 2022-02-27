@@ -5,20 +5,24 @@
  */
 package controller;
 
+import dal.BillDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Order;
 
 /**
  *
  * @author ITACHI
  */
-public class Home_AdminController extends HttpServlet {
+public class ExpireController extends HttpServlet {
 
     
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -31,7 +35,10 @@ public class Home_AdminController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       response.sendRedirect("../home_admin.jsp");
+        BillDBContext db = new BillDBContext();
+        ArrayList<Order> orders_expire = db.getExpires();
+        request.setAttribute("expire", orders_expire);
+       request.getRequestDispatcher("../view/admin/expire.jsp").forward(request, response);
     }
 
     /**
@@ -45,7 +52,7 @@ public class Home_AdminController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
+        
     }
 
     /**

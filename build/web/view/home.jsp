@@ -20,6 +20,8 @@
         <form action="signup" method="get">
             <input type="submit" value="Sign up"/>
         </form>
-        
+        <form action="logout" method="get">
+            <input type="submit" value="Logout"/>
+        </form>
     </body>
 </html>
