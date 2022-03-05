@@ -4,7 +4,11 @@
     Author     : ITACHI
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="model.Order"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -18,6 +22,9 @@
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
         <script src="https://kit.fontawesome.com/08353d1bef.js" crossorigin="anonymous"></script>
+        <%
+            ArrayList<Order> orders = (ArrayList<Order>) session.getAttribute("orders");
+        %>
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -28,7 +35,7 @@
             <!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                 <div class="input-group">
-    
+
                 </div>
             </form>
             <!-- Navbar-->
@@ -59,8 +66,10 @@
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="layout-static.html">Orders Active</a>
-                                    <a class="nav-link" href="layout-sidenav-light.html">Orders Expire</a>
+                                    
+                                    <a class="nav-link" href="admin/orders_active">Orders Active</a>
+                                    <a class="nav-link" href="admin/expire">Orders Expire</a>
+                                    
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
@@ -74,7 +83,7 @@
                                         List all User
                                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                     </a>
-                            
+
                                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
                                         Error
                                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -132,7 +141,7 @@
                                     <div class="card-body">Account Soild</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         <a class="small text-white stretched-link" href="#">100</a>
-                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -176,6 +185,26 @@
                                             <th>Time</th>
                                             <th>Type</th>
                                         </tr>
+                                        
+                                        <%
+                                            
+                                            for (Order o : orders) {
+                                        %>
+                                        <tr>
+                                            
+                                            <td><%=o.getFullname()%></td>
+                                            <td><%=o.getUsername()%></td>
+                                            <td><%=o.getGmail()%></td>
+                                            <td><%=o.getSdt()%></td>
+                                            <td><%=o.getAccNetf()%></td>
+                                            <td><%=o.getSlot()%></td>
+                                            <td><%=o.getStartDate()%></td>
+                                            <td><%=o.getTime()%></td>
+                                            <td><%=o.getType()%></td>
+                                        </tr>
+
+                                        
+                                         }%>
                                 </table>
                             </div>
                         </div>

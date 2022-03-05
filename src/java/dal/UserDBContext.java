@@ -41,30 +41,22 @@ public class UserDBContext extends DBContext {
         return isValid;
     }
 
+    
+
     public void insertUser(User user) {
         String sql = "INSERT INTO [User]\n"
-                + "           ([username]\n"
-                + "           ,[password]\n"
-                + "           ,[fullname]\n"
-                + "           ,[gmail]\n"
-                + "           ,[sdt])\n"
-                + "     VALUES\n"
-                + "			(?,\n"
-                + "			?,\n"
-                + "			?,\n"
-                + "			?,\n"
-                + "			?)";
+                + "(username,password,fullname,gmail,sdt)\n"
+                + "VALUES\n"
+                + "(?,?,?,?,?)";
 
         PreparedStatement stm = null;
         try {
-            stm = connection.prepareStatement(sql);
-            
+            stm = connection.prepareStatement(sql);       
             stm.setString(1, user.getUsername());
             stm.setString(2, user.getPassword());
             stm.setString(3, user.getFullname());
             stm.setString(4, user.getGmail());
             stm.setString(5, user.getSdt());
-            
             stm.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(UserDBContext.class.getName()).log(Level.SEVERE, null, ex);
@@ -106,5 +98,13 @@ public class UserDBContext extends DBContext {
         }
         return users;
     }
-
+    public static void main(String[] args) {
+        UserDBContext db = new UserDBContext();
+        User a = new User();
+       a.setFullname("xnxx");
+       a.setGmail("xnxx@gmail.com");
+       a.setPassword("123456");
+       a.setSdt("03452323");
+        db.insertUser(a);
+    }
 }

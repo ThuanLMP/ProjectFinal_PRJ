@@ -1,0 +1,157 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package dal;
+
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+/**
+ *
+ * @author ITACHI
+ */
+public class BusinessDBContext extends DBContext {
+
+    public int RevenueToDay() {
+        int total = 0;
+        try {
+
+            long millis = System.currentTimeMillis();
+            Date date = new java.sql.Date(millis);
+            String sql = "SELECT a.saleprice as d from Bill b inner join Account a on b.aid=a.aid \n"
+                    + "WHERE startdate= ?";
+
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setDate(1, date);
+            ResultSet rs = stm.executeQuery();
+
+            while (rs.next()) {
+                total = total + rs.getInt("d");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(BusinessDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return total;
+    }
+
+    public int Revenue30day() {
+        int total = 0;
+        try {
+
+            long millis = System.currentTimeMillis();
+            Date date = new java.sql.Date(millis);
+            String sql = "SELECT a.saleprice as d from Bill b inner join Account a on b.aid=a.aid \n"
+                    + "WHERE DATEDIFF(day,startdate,?) <=30";
+
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setDate(1, date);
+            ResultSet rs = stm.executeQuery();
+
+            while (rs.next()) {
+                total = total + rs.getInt("d");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(BusinessDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return total;
+    }
+    public int Revenue(String startDate, String endDate) {
+        int total = 0;
+        try {
+
+           
+            String sql = "SELECT a.saleprice as d from Bill b inner join Account a on b.aid=a.aid \n"
+                    + "WHERE startDate>=? and startDate<=?";
+
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1,startDate);
+            stm.setString(2, endDate);
+            ResultSet rs = stm.executeQuery();
+
+            while (rs.next()) {
+                total = total + rs.getInt("d");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(BusinessDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return total;
+    }
+    
+    
+    public int RevenueDay(String date) {
+        int total = 0;
+        try {
+            String sql = "SELECT a.saleprice as d from Bill b inner join Account a on b.aid=a.aid \n"
+                    + "WHERE startdate= ?";
+
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1, date);
+            ResultSet rs = stm.executeQuery();
+
+            while (rs.next()) {
+                total = total + rs.getInt("d");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(BusinessDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return total;
+    }
+    
+    public int profit30day() {
+        int profit = 0;
+
+        try {
+
+            long millis = System.currentTimeMillis();
+            Date date = new java.sql.Date(millis);
+            String sql = "SELECT a.saleprice-a.purchaseprice as profit from Bill b inner join Account a on b.aid=a.aid \n"
+                    + "WHERE DATEDIFF(day,startdate,?) <=30";
+
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setDate(1, date);
+            ResultSet rs = stm.executeQuery();
+
+            while (rs.next()) {
+                profit = profit + rs.getInt("profit");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(BusinessDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return profit;
+    }
+     public int Profit(String startDate, String endDate) {
+        int total = 0;
+        try {
+
+           
+            String sql = "SELECT a.saleprice-a.purchaseprice as d from Bill b inner join Account a on b.aid=a.aid \n"
+                    + "WHERE startDate>=? and startDate<=?";
+
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1,startDate);
+            stm.setString(2, endDate);
+            ResultSet rs = stm.executeQuery();
+
+            while (rs.next()) {
+                total = total + rs.getInt("d");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(BusinessDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return total;
+    }
+
+    public static void main(String[] args) {
+        BusinessDBContext db = new BusinessDBContext();
+        int total = db.Profit("2022-01-01","2022-03-05");
+        System.out.println(total);
+    }
+}

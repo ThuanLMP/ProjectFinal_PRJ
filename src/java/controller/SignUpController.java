@@ -69,7 +69,7 @@ public class SignUpController extends HttpServlet {
         if (check == 0) {
             dbuser.insertUser(user);
             response.getWriter().print("Sign up Successfull");
-            request.getRequestDispatcher("view/login.jsp").forward(request, response);
+            //request.getRequestDispatcher("view/login.jsp").forward(request, response);
         } else {
             response.getWriter().print("Username already exists");
         }

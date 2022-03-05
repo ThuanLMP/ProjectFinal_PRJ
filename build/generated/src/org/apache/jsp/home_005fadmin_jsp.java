@@ -3,6 +3,8 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import java.util.ArrayList;
+import model.Order;
 
 public final class home_005fadmin_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
@@ -44,6 +46,10 @@ public final class home_005fadmin_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("\n");
       out.write("\n");
       out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html lang=\"en\">\n");
       out.write("    <head>\n");
@@ -56,7 +62,7 @@ public final class home_005fadmin_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("        <link href=\"https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css\" rel=\"stylesheet\" />\n");
       out.write("        <link href=\"css/styles.css\" rel=\"stylesheet\" />\n");
       out.write("        <script src=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js\" crossorigin=\"anonymous\"></script>\n");
-      out.write("        <script src=\"https://kit.fontawesome.com/08353d1bef.js\" crossorigin=\"anonymous\"></script>\n");
+      out.write("        \n");
       out.write("    </head>\n");
       out.write("    <body class=\"sb-nav-fixed\">\n");
       out.write("        <nav class=\"sb-topnav navbar navbar-expand navbar-dark bg-dark\">\n");
@@ -67,7 +73,7 @@ public final class home_005fadmin_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("            <!-- Navbar Search-->\n");
       out.write("            <form class=\"d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0\">\n");
       out.write("                <div class=\"input-group\">\n");
-      out.write("    \n");
+      out.write("\n");
       out.write("                </div>\n");
       out.write("            </form>\n");
       out.write("            <!-- Navbar-->\n");
@@ -98,8 +104,8 @@ public final class home_005fadmin_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("                            </a>\n");
       out.write("                            <div class=\"collapse\" id=\"collapseLayouts\" aria-labelledby=\"headingOne\" data-bs-parent=\"#sidenavAccordion\">\n");
       out.write("                                <nav class=\"sb-sidenav-menu-nested nav\">\n");
-      out.write("                                    <a class=\"nav-link\" href=\"layout-static.html\">Orders Active</a>\n");
-      out.write("                                    <a class=\"nav-link\" href=\"layout-sidenav-light.html\">Orders Expire</a>\n");
+      out.write("                                    <a class=\"nav-link\" href=\"admin/orders_active\">Orders Active</a>\n");
+      out.write("                                    <a class=\"nav-link\" href=\"admin/expire\">Orders Expire</a>\n");
       out.write("                                </nav>\n");
       out.write("                            </div>\n");
       out.write("                            <a class=\"nav-link collapsed\" href=\"#\" data-bs-toggle=\"collapse\" data-bs-target=\"#collapsePages\" aria-expanded=\"false\" aria-controls=\"collapsePages\">\n");
@@ -113,7 +119,7 @@ public final class home_005fadmin_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("                                        List all User\n");
       out.write("                                        <div class=\"sb-sidenav-collapse-arrow\"><i class=\"fas fa-angle-down\"></i></div>\n");
       out.write("                                    </a>\n");
-      out.write("                            \n");
+      out.write("\n");
       out.write("                                    <a class=\"nav-link collapsed\" href=\"#\" data-bs-toggle=\"collapse\" data-bs-target=\"#pagesCollapseError\" aria-expanded=\"false\" aria-controls=\"pagesCollapseError\">\n");
       out.write("                                        Error\n");
       out.write("                                        <div class=\"sb-sidenav-collapse-arrow\"><i class=\"fas fa-angle-down\"></i></div>\n");
@@ -171,7 +177,7 @@ public final class home_005fadmin_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("                                    <div class=\"card-body\">Account Soild</div>\n");
       out.write("                                    <div class=\"card-footer d-flex align-items-center justify-content-between\">\n");
       out.write("                                        <a class=\"small text-white stretched-link\" href=\"#\">100</a>\n");
-      out.write("                                        \n");
+      out.write("\n");
       out.write("                                    </div>\n");
       out.write("                                </div>\n");
       out.write("                            </div>\n");
@@ -215,6 +221,8 @@ public final class home_005fadmin_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("                                            <th>Time</th>\n");
       out.write("                                            <th>Type</th>\n");
       out.write("                                        </tr>\n");
+      out.write("                                        \n");
+      out.write("                                       \n");
       out.write("                                </table>\n");
       out.write("                            </div>\n");
       out.write("                        </div>\n");

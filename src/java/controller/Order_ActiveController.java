@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Order;
 
 /**
@@ -34,6 +35,8 @@ public class Order_ActiveController extends HttpServlet {
             throws ServletException, IOException {
         BillDBContext db = new BillDBContext();
         ArrayList<Order> orders = db.getOdersActive();
+        HttpSession session = request.getSession();
+        session.setAttribute("orders", orders);
         request.setAttribute("orders_active",orders);
         request.getRequestDispatcher("../view/admin/orders_active.jsp").forward(request, response);
     }

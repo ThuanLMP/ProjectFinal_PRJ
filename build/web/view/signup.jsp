@@ -30,7 +30,7 @@
 					<img src="images/1.jpg" alt="IMG">
 				</div>
 
-                            <form class="login100-form validate-form" action="login" method="post">
+                            <form class="login100-form validate-form" action="signup" method="post">
 					<span class="login100-form-title">
 						Sign Up 
 					</span>
@@ -50,21 +50,21 @@
 							<i class="fa fa-lock" aria-hidden="true"></i>
 						</span>
 					</div>
-                                        <div class="wrap-input100 validate-input" data-validate = "Username is required" >
+                                        <div class="wrap-input100 validate-input" data-validate = "Fullname is required" >
 						<input class="input100" type="text" name="fullname" placeholder="Full Name">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-user-circle-o" aria-hidden="true"></i>
 						</span>
 					</div>
-                                        <div class="wrap-input100 validate-input" data-validate = "Username is required" >
+                                        <div class="wrap-input100 validate-input" data-validate = "Gmail is required" >
 						<input class="input100" type="text" name="gmail" placeholder="Gmail">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
 						</span>
 					</div>
-                                        <div class="wrap-input100 validate-input" data-validate = "Username is required" >
+                                        <div class="wrap-input100 validate-input" data-validate = "Phone is required" >
 						<input class="input100" type="text" name="phone" placeholder="Phone Number">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
@@ -74,7 +74,7 @@
 					
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">
-							Login
+							Sign Up
 						</button>
 					</div>
 

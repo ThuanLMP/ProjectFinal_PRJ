@@ -71,10 +71,11 @@ public class BillDBContext extends DBContext {
                     + "on b.username=u.username\n"
                     + "inner join Account a\n"
                     + "on b.aid=a.aid\n"
-                    + "WHERE [time]*30-DATEDIFF(day,startdate,?) <3;\n";
+                    + "WHERE [time]*30-DATEDIFF(day,startdate,?) <3 and [time]*30-DATEDIFF(day,startdate,?) >0 ;\n";
 
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setDate(1, date);
+            stm.setDate(2, date);
 
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {
@@ -102,12 +103,12 @@ public class BillDBContext extends DBContext {
 
             long millis = System.currentTimeMillis();
             Date date = new java.sql.Date(millis);
-            String sql = "select u.fullname, b.username,u.gmail,u.sdt,a.gmailacc,a.slot,b.startdate,b.time,a.type\n"
-                    + "from bill b inner join [user] u\n"
+             String sql = "SELECT u.fullname, b.username,u.gmail,u.sdt,a.gmailacc,a.slot,b.startdate,b.time,a.type FROM Bill b inner join [user] u\n"
                     + "on b.username=u.username\n"
                     + "inner join Account a\n"
                     + "on b.aid=a.aid\n"
-                    + "where b.startdate <= ?";
+                    + "WHERE [time]*30-DATEDIFF(day,startdate,?) >0 ;\n";
+
             
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setDate(1, date);
@@ -130,6 +131,8 @@ public class BillDBContext extends DBContext {
         }
         return orders;  
     }
+    
+   
 
     //test getExpire
     /*
