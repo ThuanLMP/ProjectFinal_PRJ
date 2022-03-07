@@ -3,23 +3,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package controller.bill;
 
-import dal.UserDBContext;
+import controller.user.BaseAuthController;
+import dal.BillDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import model.User;
+import model.Order;
 
 /**
  *
  * @author ITACHI
  */
-public class LogInController extends HttpServlet {
+public class OrdersController extends BaseAuthController {
+
+   
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -31,9 +35,12 @@ public class LogInController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void processGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("view/login.jsp").forward(request, response);
+        BillDBContext db = new BillDBContext();
+        ArrayList<Order> orders = db.getOders();
+        request.setAttribute("orders",orders);
+        request.getRequestDispatcher("../view/admin/orders.jsp").forward(request, response);
     }
 
     /**
@@ -45,25 +52,9 @@ public class LogInController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void processPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        User user = new User();
-        user.setUsername(username);
-        user.setPassword(password);
-        boolean isValid = false;
-        UserDBContext db = new UserDBContext();
-        isValid = db.LoginUser(username,password);
-        if(isValid){
-            response.getWriter().print("Login Successfull");
-            HttpSession session = request.getSession();
-                session.setAttribute("accountsession", user);
-                response.sendRedirect("view/home.jsp");
-        }
-        else{
-            response.getWriter().print("Login Failed");
-        }
+        
     }
 
     /**

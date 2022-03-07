@@ -19,8 +19,8 @@ import model.User;
  */
 public class UserDBContext extends DBContext {
 
-    public boolean LoginUser(String username, String password) {
-        boolean isValid = false;
+    public int LoginUser(String username, String password) {
+        int Valid = -1;
         String sql = "select*from [User]\n"
                 + "where username=? and password=?";
         PreparedStatement stm = null;
@@ -30,15 +30,19 @@ public class UserDBContext extends DBContext {
             stm.setString(2, password);
             ResultSet rs = stm.executeQuery();
             if (rs.next()) {
-                isValid = true;
+                if(username=="mra"){
+                    Valid=1;
+                }
+                else
+                    Valid=0;
 
             } else {
-                isValid = false;
+                Valid = -1;
             }
         } catch (SQLException ex) {
             Logger.getLogger(UserDBContext.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return isValid;
+        return Valid;
     }
 
     
@@ -98,13 +102,11 @@ public class UserDBContext extends DBContext {
         }
         return users;
     }
+    
     public static void main(String[] args) {
         UserDBContext db = new UserDBContext();
-        User a = new User();
-       a.setFullname("xnxx");
-       a.setGmail("xnxx@gmail.com");
-       a.setPassword("123456");
-       a.setSdt("03452323");
-        db.insertUser(a);
+        int check = db.LoginUser("mra", "mra");
+        System.out.println(check);
     }
+ 
 }

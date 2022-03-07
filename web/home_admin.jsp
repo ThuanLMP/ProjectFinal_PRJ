@@ -22,9 +22,7 @@
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
         <script src="https://kit.fontawesome.com/08353d1bef.js" crossorigin="anonymous"></script>
-        <%
-            ArrayList<Order> orders = (ArrayList<Order>) session.getAttribute("orders");
-        %>
+        
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -43,7 +41,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Logout</a></li>
+                        <li><a class="dropdown-item" href="">Logout</a></li>
                     </ul>
                 </li>
             </ul>
@@ -186,25 +184,21 @@
                                             <th>Type</th>
                                         </tr>
                                         
-                                        <%
-                                            
-                                            for (Order o : orders) {
-                                        %>
-                                        <tr>
-                                            
-                                            <td><%=o.getFullname()%></td>
-                                            <td><%=o.getUsername()%></td>
-                                            <td><%=o.getGmail()%></td>
-                                            <td><%=o.getSdt()%></td>
-                                            <td><%=o.getAccNetf()%></td>
-                                            <td><%=o.getSlot()%></td>
-                                            <td><%=o.getStartDate()%></td>
-                                            <td><%=o.getTime()%></td>
-                                            <td><%=o.getType()%></td>
-                                        </tr>
+                                        <c:forEach items="${orders}" var="o">
+                                            <tr>
 
+                                                <td>${o.getFullname()}</td>
+                                                <td>${o.getUsername()}</td>
+                                                <td>${o.getGmail()}</td>
+                                                <td>${o.getSdt()}</td>
+                                                <td>${o.getAccNetf()}</td>
+                                                <td>${o.getSlot()}</td>
+                                                <td>${o.getStartDate()}</td>
+                                                <td>${o.getTime()}</td>
+                                                <td>${o.getType()}</td>
+                                            </tr>
+                                        </c:forEach>
                                         
-                                         }%>
                                 </table>
                             </div>
                         </div>

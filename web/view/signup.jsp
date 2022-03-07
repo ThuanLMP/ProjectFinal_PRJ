@@ -30,7 +30,7 @@
 					<img src="images/1.jpg" alt="IMG">
 				</div>
 
-                            <form class="login100-form validate-form" action="signup" method="post">
+                            <form class="login100-form validate-form" action="signup" method="POST">
 					<span class="login100-form-title">
 						Sign Up 
 					</span>
@@ -65,7 +65,7 @@
 						</span>
 					</div>
                                         <div class="wrap-input100 validate-input" data-validate = "Phone is required" >
-						<input class="input100" type="text" name="phone" placeholder="Phone Number">
+						<input class="input100" type="text" name="sdt" placeholder="Phone Number">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-phone" aria-hidden="true"></i>

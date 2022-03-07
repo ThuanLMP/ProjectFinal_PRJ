@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package controller.bill;
 
-import dal.UserDBContext;
+import controller.user.BaseAuthController;
+import dal.BillDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -13,13 +14,15 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.User;
+import model.Order;
 
 /**
  *
  * @author ITACHI
  */
-public class SignUpController extends HttpServlet {
+public class ExpireController extends BaseAuthController {
+
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -31,9 +34,12 @@ public class SignUpController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void processGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("view/signup.jsp").forward(request, response);
+        BillDBContext db = new BillDBContext();
+        ArrayList<Order> orders_expire = db.getExpires();
+        request.setAttribute("expire", orders_expire);
+       request.getRequestDispatcher("../view/admin/expire.jsp").forward(request, response);
     }
 
     /**
@@ -45,34 +51,9 @@ public class SignUpController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void processPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        String fullname = request.getParameter("fullname");
-        String gmail = request.getParameter("gmail");
-        String sdt = request.getParameter("sdt");
-        User user = new User();
-        user.setUsername(username);
-        user.setPassword(password);
-        user.setFullname(fullname);
-        user.setGmail(gmail);
-        user.setSdt(sdt);
-        UserDBContext dbuser = new UserDBContext();
-        ArrayList<User> users = dbuser.getUsers();
-        int check = 0;
-        for (User u : users) {
-            if (username.equals(u.getUsername())) {
-                check = 1;
-            }
-        }
-        if (check == 0) {
-            dbuser.insertUser(user);
-            response.getWriter().print("Sign up Successfull");
-            //request.getRequestDispatcher("view/login.jsp").forward(request, response);
-        } else {
-            response.getWriter().print("Username already exists");
-        }
+        
     }
 
     /**

@@ -2,11 +2,11 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
         <servlet-name>LoginController</servlet-name>
-        <servlet-class>controller.LogInController</servlet-class>
+        <servlet-class>controller.user.LogInController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>LogoutController</servlet-name>
-        <servlet-class>controller.LogOutController</servlet-class>
+        <servlet-class>controller.user.LogOutController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>HomeController</servlet-name>
@@ -14,11 +14,11 @@
     </servlet>
     <servlet>
         <servlet-name>SignUpController</servlet-name>
-        <servlet-class>controller.SignUpController</servlet-class>
+        <servlet-class>controller.user.SignUpController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>OrdersController</servlet-name>
-        <servlet-class>controller.OrdersController</servlet-class>
+        <servlet-class>controller.bill.OrdersController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>HomeAdminController</servlet-name>
@@ -30,15 +30,15 @@
     </servlet>
     <servlet>
         <servlet-name>ExpireController</servlet-name>
-        <servlet-class>controller.ExpireController</servlet-class>
+        <servlet-class>controller.bill.ExpireController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Order_ActionController</servlet-name>
-        <servlet-class>controller.Order_ActiveController</servlet-class>
+        <servlet-class>controller.bill.Order_ActiveController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>UserController</servlet-name>
-        <servlet-class>controller.UserController</servlet-class>
+        <servlet-class>controller.user.UserController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>RevenueToDayController</servlet-name>

@@ -1,28 +1,42 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package controller.user;
 
-import dal.BillDBContext;
+
+import dal.UserDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Order;
+import model.User;
 
 /**
  *
  * @author ITACHI
  */
-public class OrdersController extends HttpServlet {
 
-   
-    
+public abstract class BaseAuthController extends HttpServlet {
+
+    private boolean isAuth(HttpServletRequest request)
+    {
+        User user = (User)request.getSession().getAttribute("user");
+        if(user ==null)
+            return false;
+        else
+        {
+            String url = request.getServletPath();
+            UserDBContext db = new UserDBContext();
+            int check=db.LoginUser(user.getUsername(), user.getPassword());
+            return check>=0;
+        }
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -36,11 +50,21 @@ public class OrdersController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        BillDBContext db = new BillDBContext();
-        ArrayList<Order> orders = db.getOders();
-        request.setAttribute("orders",orders);
-        request.getRequestDispatcher("../view/admin/orders.jsp").forward(request, response);
+        if(isAuth(request))
+        {
+            //business
+            processGet(request, response);
+        }
+        else
+        {
+            response.getWriter().println("access denied!");
+        }
     }
+    
+    protected abstract void processGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException;
+    protected abstract void processPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException;
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -53,7 +77,15 @@ public class OrdersController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        if(isAuth(request))
+        {
+            //business
+            processPost(request, response);
+        }
+        else
+        {
+            response.getWriter().println("access denied!");
+        }
     }
 
     /**

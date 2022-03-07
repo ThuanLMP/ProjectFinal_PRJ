@@ -134,14 +134,13 @@ public class BillDBContext extends DBContext {
     
    
 
-    //test getExpire
-    /*
+    
     public static void main(String[] args) {
         BillDBContext b = new BillDBContext();
-        ArrayList<Order> orders = b.getExpires();
+        ArrayList<Order> orders = b.getOdersActive();
         for(Order o:orders){
             System.out.println(o.toString());
         }
     }
-     */
+     
 }
