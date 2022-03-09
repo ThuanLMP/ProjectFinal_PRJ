@@ -20,7 +20,7 @@ import java.util.logging.Logger;
  */
 public class BusinessDBContext extends DBContext {
 
-    public int RevenueToDay() {
+    public int getRevenueToDay() {
         int total = 0;
         try {
 
@@ -42,7 +42,7 @@ public class BusinessDBContext extends DBContext {
         return total;
     }
 
-    public int Revenue30day() {
+    public int getRevenue30day() {
         int total = 0;
         try {
 
@@ -63,7 +63,7 @@ public class BusinessDBContext extends DBContext {
         }
         return total;
     }
-    public int Revenue(String startDate, String endDate) {
+    public int getRevenue(String startDate, String endDate) {
         int total = 0;
         try {
 
@@ -86,7 +86,7 @@ public class BusinessDBContext extends DBContext {
     }
     
     
-    public int RevenueDay(String date) {
+    public int getRevenueDay(String date) {
         int total = 0;
         try {
             String sql = "SELECT a.saleprice as d from Bill b inner join Account a on b.aid=a.aid \n"
@@ -105,7 +105,7 @@ public class BusinessDBContext extends DBContext {
         return total;
     }
     
-    public int profit30day() {
+    public int getProfit30day() {
         int profit = 0;
 
         try {
@@ -127,7 +127,7 @@ public class BusinessDBContext extends DBContext {
         }
         return profit;
     }
-     public int Profit(String startDate, String endDate) {
+     public int getProfit(String startDate, String endDate) {
         int total = 0;
         try {
 
@@ -151,7 +151,7 @@ public class BusinessDBContext extends DBContext {
 
     public static void main(String[] args) {
         BusinessDBContext db = new BusinessDBContext();
-        int total = db.Profit("2022-01-01","2022-03-05");
+        int total = db.getProfit("2022-01-01","2022-03-05");
         System.out.println(total);
     }
 }

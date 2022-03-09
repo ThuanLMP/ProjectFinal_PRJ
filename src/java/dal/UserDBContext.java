@@ -30,7 +30,7 @@ public class UserDBContext extends DBContext {
             stm.setString(2, password);
             ResultSet rs = stm.executeQuery();
             if (rs.next()) {
-                if(username=="mra"){
+                if(username.equalsIgnoreCase("admin")){
                     Valid=1;
                 }
                 else

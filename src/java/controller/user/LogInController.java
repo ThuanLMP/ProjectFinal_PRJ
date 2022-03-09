@@ -54,19 +54,18 @@ public class LogInController extends HttpServlet {
         user.setPassword(password);
         int check = -1;
         UserDBContext db = new UserDBContext();
-        check = db.LoginUser("mra",password);
+        check = db.LoginUser(username.trim(),password);
         
         if(check==0){
             HttpSession session = request.getSession();
-                session.setAttribute(username.trim(), user);
+                session.setAttribute("user", user);
                 response.sendRedirect("./home_user.jsp");
         }
         
         else if(check==1){
-                response.getWriter().print("Login Successfull");
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);
-                response.sendRedirect("./home_admin.jsp");
+                response.sendRedirect("./admin/home");
             }
         else{
             response.getWriter().print("Login Failed");

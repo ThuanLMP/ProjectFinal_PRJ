@@ -126,7 +126,7 @@
                                 >
                                     <a
                                         class="btn btn-danger btn-lg px-4 me-sm-3"
-                                        href="./plans"
+                                        href="#"
                                         >Mua ngay</a
                                     >
                                     <a

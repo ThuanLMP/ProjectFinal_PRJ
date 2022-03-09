@@ -7,6 +7,7 @@ package controller;
 
 import controller.user.BaseAuthController;
 import dal.BillDBContext;
+import dal.BusinessDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -35,10 +36,13 @@ public class Home_AdminController extends BaseAuthController {
     @Override
     protected void processGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        BillDBContext db = new BillDBContext();
-        ArrayList<Order> orders = db.getOdersActive();
+        BillDBContext dbbill = new BillDBContext();
+        BusinessDBContext dbbusiness = new BusinessDBContext();
+        ArrayList<Order> orders = dbbill.getOdersActive();
         HttpSession session = request.getSession();
         session.setAttribute("orders", orders);
+        int revenueToDay = dbbusiness.getRevenueToDay();
+        session.setAttribute("revdoday", revenueToDay);
         response.sendRedirect("../home_admin.jsp");
     }
 

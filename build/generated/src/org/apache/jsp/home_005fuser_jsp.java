@@ -165,7 +165,7 @@ public final class home_005fuser_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("                                >\n");
       out.write("                                    <a\n");
       out.write("                                        class=\"btn btn-danger btn-lg px-4 me-sm-3\"\n");
-      out.write("                                        href=\"./plans\"\n");
+      out.write("                                        href=\"#\"\n");
       out.write("                                        >Mua ngay</a\n");
       out.write("                                    >\n");
       out.write("                                    <a\n");
