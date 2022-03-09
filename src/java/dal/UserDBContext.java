@@ -105,8 +105,9 @@ public class UserDBContext extends DBContext {
     
     public static void main(String[] args) {
         UserDBContext db = new UserDBContext();
-        int check = db.LoginUser("mra", "mra");
-        System.out.println(check);
+        ArrayList<User> users = db.getUsers();
+        int count = users.size();
+        System.out.println(count);
     }
  
 }

@@ -18,11 +18,29 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Admin Manager</title>
+
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
+        <!--===============================================================================================-->	
+        <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+        <!--===============================================================================================-->	
+        <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="css/util.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <!--===============================================================================================-->
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
         <script src="https://kit.fontawesome.com/08353d1bef.js" crossorigin="anonymous"></script>
-        
+
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -64,10 +82,10 @@
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    
+
                                     <a class="nav-link" href="admin/orders_active">Orders Active</a>
                                     <a class="nav-link" href="admin/expire">Orders Expire</a>
-                                    
+
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
@@ -105,16 +123,16 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Dashboard</h1>
+                        <h1 class="mt-4">Manager Neflix Store</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Dashboard</li>
+                            <li class="breadcrumb-item active">Trần Văn Thuận</li>
                         </ol>
                         <div class="row">
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-primary text-white mb-4">
                                     <div class="card-body">Doanh thu hom nay</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">120.000 VND</a>
+                                        <a class="small text-white stretched-link" style="text-decoration: none" href="#">${sessionScope.revtoday} VND</a>
                                     </div>
                                 </div>
                             </div>
@@ -122,7 +140,7 @@
                                 <div class="card bg-warning text-white mb-4">
                                     <div class="card-body">Doanh thu thang nay</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">2.050.000 VND</a>
+                                        <a class="small text-white stretched-link" style="text-decoration: none" href="#">${sessionScope.rev30day} VND</a>
                                     </div>
                                 </div>
                             </div>
@@ -130,15 +148,15 @@
                                 <div class="card bg-success text-white mb-4">
                                     <div class="card-body">All User</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">130</a>
+                                        <a class="small text-white stretched-link" style="text-decoration: none" href="#">${sessionScope.countUser} </a>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-danger text-white mb-4">
-                                    <div class="card-body">Account Soild</div>
+                                    <div class="card-body" >Account Soild</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">100</a>
+                                        <a class="small text-white stretched-link" style="text-decoration: none" href="#">${sessionScope.countOrder}</a>
 
                                     </div>
                                 </div>
@@ -149,18 +167,71 @@
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fas fa-chart-area me-1"></i>
-                                        Revenue chart
+                                        ADD NEW USER
                                     </div>
-                                    <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
+
+                                    <div class="card-body">
+                                        
+                                        <form class="validate-form" action="adduser" method="POST">
+                                            <div class="wrap-input100 validate-input" data-validate = "Username is required" >
+                                                <input class="input100" type="text" name="username" placeholder="User Name">
+                                                <span class="focus-input100"></span>
+                                                <span class="symbol-input100">
+                                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                                </span>
+                                            </div>
+
+                                            <div class="wrap-input100 validate-input" data-validate = "Password is required">
+                                                <input class="input100" type="password" name="password" placeholder="Password">
+                                                <span class="focus-input100"></span>
+                                                <span class="symbol-input100">
+                                                    <i class="fa fa-lock" aria-hidden="true"></i>
+                                                </span>
+                                            </div>
+                                            <div class="wrap-input100 validate-input" data-validate = "Fullname is required" >
+                                                <input class="input100" type="text" name="fullname" placeholder="Full Name">
+                                                <span class="focus-input100"></span>
+                                                <span class="symbol-input100">
+                                                    <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                                                </span>
+                                            </div>
+                                            <div class="wrap-input100 validate-input" data-validate = "Gmail is required" >
+                                                <input class="input100" type="text" name="gmail" placeholder="Gmail">
+                                                <span class="focus-input100"></span>
+                                                <span class="symbol-input100">
+                                                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                                                </span>
+                                            </div>
+                                            <div class="wrap-input100 validate-input" data-validate = "Phone is required" >
+                                                <input class="input100" type="text" name="sdt" placeholder="Phone Number">
+                                                <span class="focus-input100"></span>
+                                                <span class="symbol-input100">
+                                                    <i class="fa fa-phone" aria-hidden="true"></i>
+                                                </span>
+                                            </div>
+
+                                            <div class="container-login100-form-btn">
+                                                <button class="login100-form-btn">
+                                                    ADD
+                                                </button>
+                                            </div>
+                                        </form>
+                                        
+                                    </div>
+
                                 </div>
                             </div>
+                            
                             <div class="col-xl-6">
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fas fa-chart-bar me-1"></i>
-                                        User chart
+                                        ADD NEW ORDER
                                     </div>
-                                    <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
+                                    <div class="card-body">
+                                        
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -183,7 +254,7 @@
                                             <th>Time</th>
                                             <th>Type</th>
                                         </tr>
-                                        
+
                                         <c:forEach items="${orders}" var="o">
                                             <tr>
 
@@ -198,7 +269,7 @@
                                                 <td>${o.getType()}</td>
                                             </tr>
                                         </c:forEach>
-                                        
+
                                 </table>
                             </div>
                         </div>
@@ -210,15 +281,15 @@
                             <div class="text-muted">Website design by Trần Văn Thuận</div>
                             <div>
                                 <a href="#">Facebook</a>
-                               
+
                                 <a href="#">Youtube</a>
                             </div>
                         </div>
                     </div>
                 </footer>
-                
-                  
-                
+
+
+
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
@@ -228,5 +299,22 @@
         <script src="assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="js/datatables-simple-demo.js"></script>
+        <!--===============================================================================================-->	
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/tilt/tilt.jquery.min.js"></script>
+	<script >
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+
     </body>
 </html>

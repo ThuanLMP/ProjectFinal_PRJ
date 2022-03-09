@@ -52,7 +52,7 @@ public class SignUpController extends HttpServlet {
         String fullname = request.getParameter("fullname");
         String gmail = request.getParameter("gmail");
         String sdt = request.getParameter("sdt");
-        System.out.println("1."+ username + "2." + password + "3." + fullname + "4." + gmail + "5." + sdt + "-------------");
+ 
         User user = new User();
         user.setUsername(username);
         user.setPassword(password);
@@ -70,7 +70,7 @@ public class SignUpController extends HttpServlet {
         if (check == 0) {
             dbuser.insertUser(user);
             response.getWriter().print("Sign up Successfull");
-            //request.getRequestDispatcher("view/login.jsp").forward(request, response);
+            request.getRequestDispatcher("view/login.jsp").forward(request, response);
         } else {
             response.getWriter().print("Username already exists");
         }
