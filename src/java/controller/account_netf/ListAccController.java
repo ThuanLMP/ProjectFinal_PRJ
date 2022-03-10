@@ -3,12 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package controller.account_netf;
 
-import controller.user.BaseAuthController;
-import dal.BillDBContext;
-import dal.BusinessDBContext;
-import dal.UserDBContext;
+import dal.AccountDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -16,15 +13,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import model.Order;
-import model.User;
+import model.Account_netf;
 
 /**
  *
  * @author ITACHI
  */
-public class Home_AdminController extends BaseAuthController {
+public class ListAccController extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -36,29 +31,14 @@ public class Home_AdminController extends BaseAuthController {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void processGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        BillDBContext dbbill = new BillDBContext();
-        BusinessDBContext dbbusiness = new BusinessDBContext();
-        int revenueToDay = dbbusiness.getRevenueToDay();
-        int revenue30Day = dbbusiness.getProfit30day();
-        UserDBContext dbuser = new UserDBContext();
-        ArrayList<User> users = dbuser.getUsers();
-        int countUser = users.size();      
-        ArrayList<Order> orders1 = dbbill.getOdersActive();       
-        ArrayList<Order> orders2 = dbbill.getOders();
-        int countOrder = orders2.size();
-        
-        HttpSession session = request.getSession();
-        
-        session.setAttribute("countOrder",countOrder);
-        session.setAttribute("countUser", countUser);
-        session.setAttribute("orders", orders1);
-        session.setAttribute("rev30day", revenue30Day);
-        session.setAttribute("revtoday", revenueToDay);
-        response.sendRedirect("../home_admin.jsp");
-        
+        AccountDBContext db = new AccountDBContext();
+        ArrayList<Account_netf> accs = db.getAccs();
+        request.setAttribute("accs", accs);
+        request.getRequestDispatcher("../view/admin/list_accounts.jsp").forward(request, response);
+
     }
 
     /**
@@ -70,7 +50,7 @@ public class Home_AdminController extends BaseAuthController {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void processPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
     }

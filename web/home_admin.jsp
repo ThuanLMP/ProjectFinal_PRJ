@@ -40,12 +40,13 @@
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
         <script src="https://kit.fontawesome.com/08353d1bef.js" crossorigin="anonymous"></script>
-
+        
+        
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.html">Admin Manager</a>
+            <a class="navbar-brand ps-3" href="admin/home">Admin Manager</a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
@@ -70,7 +71,7 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="index.html">
+                            <a class="nav-link" href="admin/home">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-house"></i></i></div>
                                 MAIN
                             </a>
@@ -94,17 +95,9 @@
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                        List all User
-                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                    </a>
-
-                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
-                                        Error
-                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                    </a>
-
+                                <nav class="sb-sidenav-menu-nested nav accordion" >                                   
+                                       <a class="nav-link" href="admin/list_user">List User</a>                                                                                                      
+                                       <a class="nav-link" href="admin/list_account">List Account</a>                                                                                                 
                                 </nav>
                             </div>
                             <div class="sb-sidenav-menu-heading">FORM</div>
@@ -117,7 +110,7 @@
                                 Add new Bill
                             </a>
                         </div>
-
+                        
                 </nav>
             </div>
             <div id="layoutSidenav_content">
@@ -166,12 +159,12 @@
                             <div class="col-xl-6">
                                 <div class="card mb-4">
                                     <div class="card-header">
-                                        <i class="fas fa-chart-area me-1"></i>
+                                       <i class="fa-solid fa-circle-plus"></i>
                                         ADD NEW USER
                                     </div>
 
                                     <div class="card-body">
-                                        
+
                                         <form class="validate-form" action="adduser" method="POST">
                                             <div class="wrap-input100 validate-input" data-validate = "Username is required" >
                                                 <input class="input100" type="text" name="username" placeholder="User Name">
@@ -188,11 +181,12 @@
                                                     <i class="fa fa-lock" aria-hidden="true"></i>
                                                 </span>
                                             </div>
+
                                             <div class="wrap-input100 validate-input" data-validate = "Fullname is required" >
                                                 <input class="input100" type="text" name="fullname" placeholder="Full Name">
                                                 <span class="focus-input100"></span>
                                                 <span class="symbol-input100">
-                                                    <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-user-circle" aria-hidden="true"></i>                                                
                                                 </span>
                                             </div>
                                             <div class="wrap-input100 validate-input" data-validate = "Gmail is required" >
@@ -215,25 +209,74 @@
                                                     ADD
                                                 </button>
                                             </div>
+                                            
                                         </form>
-                                        
+
                                     </div>
 
                                 </div>
                             </div>
-                            
+
                             <div class="col-xl-6">
                                 <div class="card mb-4">
                                     <div class="card-header">
-                                        <i class="fas fa-chart-bar me-1"></i>
-                                        ADD NEW ORDER
+                                        <i class="fa-solid fa-circle-plus"></i>
+                                        ADD NEW ACCOUNT NETFLIX
                                     </div>
                                     <div class="card-body">
-                                        
+                                        <form class="validate-form" action="adduser" method="POST">
+                                            <div class="wrap-input100 validate-input" data-validate = "Username is required" >
+                                                <input class="input100" type="text" name="username" placeholder="User Name">
+                                                <span class="focus-input100"></span>
+                                                <span class="symbol-input100">
+                                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                                </span>
+                                            </div>
+
+                                            <div class="wrap-input100 validate-input" data-validate = "Password is required">
+                                                <input class="input100" type="password" name="password" placeholder="Password">
+                                                <span class="focus-input100"></span>
+                                                <span class="symbol-input100">
+                                                    <i class="fa fa-lock" aria-hidden="true"></i>
+                                                </span>
+                                            </div>
+
+                                            <div class="wrap-input100 validate-input" data-validate = "Fullname is required" >
+                                                <input class="input100" type="text" name="fullname" placeholder="Full Name">
+                                                <span class="focus-input100"></span>
+                                                <span class="symbol-input100">
+                                                    <i class="fa fa-user-circle" aria-hidden="true"></i>                                                
+                                                </span>
+                                            </div>
+                                            <div class="wrap-input100 validate-input" data-validate = "Gmail is required" >
+                                                <input class="input100" type="text" name="gmail" placeholder="Gmail">
+                                                <span class="focus-input100"></span>
+                                                <span class="symbol-input100">
+                                                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                                                </span>
+                                            </div>
+                                            <div class="wrap-input100 validate-input" data-validate = "Phone is required" >
+                                                <input class="input100" type="text" name="sdt" placeholder="Phone Number">
+                                                <span class="focus-input100"></span>
+                                                <span class="symbol-input100">
+                                                    <i class="fa fa-phone" aria-hidden="true"></i>
+                                                </span>
+                                            </div>
+
+                                            <div class="container-login100-form-btn">
+                                                <button class="login100-form-btn">
+                                                    ADD
+                                                </button>
+                                            </div>
+                                            
+                                        </form>
+
                                     </div>
 
                                 </div>
                             </div>
+
+
                         </div>
                         <div class="card mb-4">
                             <div class="card-header">
@@ -300,21 +343,21 @@
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="js/datatables-simple-demo.js"></script>
         <!--===============================================================================================-->	
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/tilt/tilt.jquery.min.js"></script>
-	<script >
-		$('.js-tilt').tilt({
-			scale: 1.1
-		})
-	</script>
-<!--===============================================================================================-->
-	<script src="js/main.js"></script>
+        <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+        <!--===============================================================================================-->
+        <script src="vendor/bootstrap/js/popper.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+        <!--===============================================================================================-->
+        <script src="vendor/select2/select2.min.js"></script>
+        <!--===============================================================================================-->
+        <script src="vendor/tilt/tilt.jquery.min.js"></script>
+        <script >
+            $('.js-tilt').tilt({
+                scale: 1.1
+            })
+        </script>
+        <!--===============================================================================================-->
+        <script src="js/main.js"></script>
 
     </body>
 </html>
