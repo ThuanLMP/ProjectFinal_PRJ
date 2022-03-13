@@ -1,6 +1,6 @@
 <%-- 
-    Document   : product
-    Created on : Mar 9, 2022, 5:05:23 AM
+    Document   : cart
+    Created on : Mar 13, 2022, 8:32:02 PM
     Author     : ITACHI
 --%>
 
@@ -12,6 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        
+        <h1>Hello World!</h1>
     </body>
 </html>

@@ -37,11 +37,11 @@
         <link rel="stylesheet" type="text/css" href="css/util.css">
         <link rel="stylesheet" type="text/css" href="css/main.css">
         <!--===============================================================================================-->
-
+        
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
         <script src="https://kit.fontawesome.com/08353d1bef.js" crossorigin="anonymous"></script>
-        
-        
+
+
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -60,7 +60,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                        <li><a class="dropdown-item" href="./logout">Logout</a></li>
                     </ul>
                 </li>
             </ul>
@@ -96,8 +96,8 @@
                             </a>
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" >                                   
-                                       <a class="nav-link" href="admin/list_user">List User</a>                                                                                                      
-                                       <a class="nav-link" href="admin/list_account">List Account</a>                                                                                                 
+                                    <a class="nav-link" href="admin/list_user">List User</a>                                                                                                      
+                                    <a class="nav-link" href="admin/list_account">List Account</a>                                                                                                 
                                 </nav>
                             </div>
                             <div class="sb-sidenav-menu-heading">FORM</div>
@@ -110,7 +110,7 @@
                                 Add new Bill
                             </a>
                         </div>
-                        
+
                 </nav>
             </div>
             <div id="layoutSidenav_content">
@@ -159,7 +159,7 @@
                             <div class="col-xl-6">
                                 <div class="card mb-4">
                                     <div class="card-header">
-                                       <i class="fa-solid fa-circle-plus"></i>
+                                        <i class="fa-solid fa-circle-plus"></i>
                                         ADD NEW USER
                                     </div>
 
@@ -209,7 +209,7 @@
                                                     ADD
                                                 </button>
                                             </div>
-                                            
+
                                         </form>
 
                                     </div>
@@ -268,7 +268,7 @@
                                                     ADD
                                                 </button>
                                             </div>
-                                            
+
                                         </form>
 
                                     </div>

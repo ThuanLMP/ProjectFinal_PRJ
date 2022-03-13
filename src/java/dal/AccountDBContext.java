@@ -19,6 +19,7 @@ import model.User;
  * @author ITACHI
  */
 public class AccountDBContext extends DBContext {
+
     /*
     public void insertUser(User user) {
         String sql = "SELECT aid,gmailacc,password,purchaseprice,saleprice,slot,type,active \n"
@@ -52,7 +53,7 @@ public class AccountDBContext extends DBContext {
             }
         }
     }
-    */
+     */
 
     public ArrayList<Account_netf> getAccs() {
         ArrayList<Account_netf> acc_netfs = new ArrayList<>();
@@ -77,15 +78,60 @@ public class AccountDBContext extends DBContext {
         } catch (SQLException ex) {
             Logger.getLogger(UserDBContext.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return acc_netfs ;
-    }
-    
-    public static void main(String[] args) {
-        AccountDBContext db = new AccountDBContext();
-        ArrayList<Account_netf> accs = db.getAccs();
-        for(Account_netf a : accs){
-            System.out.println(a.toString());
-        }
+        return acc_netfs;
     }
 
+    public int getMinId(String type) {
+        int n = 0;
+        try {
+            String sql = "select  MIN(aid) as aid from Account where type=? and active=1";
+
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1, type);
+            ResultSet rs = stm.executeQuery();
+
+            while (rs.next()) {
+                String check = rs.getString("aid");
+                n = Integer.parseInt(check);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return n;
+    }
+
+    public Account_netf getAcc(int id) {
+        Account_netf acc = new Account_netf();
+        try {
+            String sql = "select  aid,gmailacc,password,purchaseprice,saleprice,slot,type,active  from Account where aid=?";
+
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setInt(1, id);
+            ResultSet rs = stm.executeQuery();
+
+            while (rs.next()) {
+
+                acc.setId(rs.getInt("aid"));
+                acc.setGmail(rs.getString("gmailacc"));
+                acc.setPassword(rs.getString("password"));
+                acc.setPurPrice(rs.getInt("purchaseprice"));
+                acc.setSalePrice(rs.getInt("saleprice"));
+                acc.setType(rs.getString("type"));
+                acc.setSlot(rs.getInt("slot"));
+                acc.setActive(rs.getInt("active"));
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return acc;
+    }
+
+    public static void main(String[] args) {
+        AccountDBContext db = new AccountDBContext();
+        int check = db.getMinId("2-END");
+        Account_netf acc = db.getAcc(check);
+        System.out.println(acc.toString());
+    }
 }

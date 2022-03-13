@@ -41,16 +41,20 @@
         <servlet-class>controller.user.UserController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>RevenueToDayController</servlet-name>
-        <servlet-class>controller.business.RevenueToDayController</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>AddUserController</servlet-name>
         <servlet-class>controller.user.AddUserController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ListAccController</servlet-name>
         <servlet-class>controller.account_netf.ListAccController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProductController</servlet-name>
+        <servlet-class>controller.business.ProductController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CartController</servlet-name>
+        <servlet-class>controller.business.CartController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
@@ -93,16 +97,20 @@
         <url-pattern>/admin/list_user</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>RevenueToDayController</servlet-name>
-        <url-pattern>/admin/business/revenue_to_day</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>AddUserController</servlet-name>
         <url-pattern>/adduser</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ListAccController</servlet-name>
         <url-pattern>/admin/list_account</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProductController</servlet-name>
+        <url-pattern>/home/products</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CartController</servlet-name>
+        <url-pattern>/home/products/cart</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

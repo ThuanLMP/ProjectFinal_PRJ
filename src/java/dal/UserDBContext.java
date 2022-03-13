@@ -30,11 +30,11 @@ public class UserDBContext extends DBContext {
             stm.setString(2, password);
             ResultSet rs = stm.executeQuery();
             if (rs.next()) {
-                if(username.equalsIgnoreCase("admin")){
-                    Valid=1;
+                if (username.equalsIgnoreCase("admin")) {
+                    Valid = 1;
+                } else {
+                    Valid = 0;
                 }
-                else
-                    Valid=0;
 
             } else {
                 Valid = -1;
@@ -45,8 +45,6 @@ public class UserDBContext extends DBContext {
         return Valid;
     }
 
-    
-
     public void insertUser(User user) {
         String sql = "INSERT INTO [User]\n"
                 + "(username,password,fullname,gmail,sdt)\n"
@@ -55,7 +53,7 @@ public class UserDBContext extends DBContext {
 
         PreparedStatement stm = null;
         try {
-            stm = connection.prepareStatement(sql);       
+            stm = connection.prepareStatement(sql);
             stm.setString(1, user.getUsername());
             stm.setString(2, user.getPassword());
             stm.setString(3, user.getFullname());
@@ -102,12 +100,39 @@ public class UserDBContext extends DBContext {
         }
         return users;
     }
-    
+
+    public void deleteUser(String username) {
+        String sql = "DELETE FROM [User]\n"
+                + "      WHERE username=?";
+
+        PreparedStatement stm = null;
+        try {
+            stm = connection.prepareStatement(sql);
+            stm.setString(1, username);
+            stm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (stm != null) {
+                try {
+                    stm.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(UserDBContext.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(UserDBContext.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }
+
     public static void main(String[] args) {
         UserDBContext db = new UserDBContext();
-        ArrayList<User> users = db.getUsers();
-        int count = users.size();
-        System.out.println(count);
+       db.deleteUser("LTP");
     }
- 
+
 }
