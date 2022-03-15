@@ -50,6 +50,7 @@ public class Home_AdminController extends BaseAuthController {
         ArrayList<Order> orders2 = dbbill.getOders();
         int countOrder = orders2.size();
         
+        
         HttpSession session = request.getSession();
         
         session.setAttribute("countOrder",countOrder);

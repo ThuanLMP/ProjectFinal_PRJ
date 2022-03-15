@@ -57,7 +57,7 @@ public abstract class BaseAuthController extends HttpServlet {
         }
         else
         {
-            response.getWriter().println("access denied!");
+            response.sendRedirect("../login");
         }
     }
     

@@ -4,6 +4,7 @@
     Author     : ITACHI
 --%>
 
+<%@page import="model.OrderCart"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -52,6 +53,12 @@
                 border-color: rgb(255, 255, 255);
             }
         </style>
+        <%
+         
+            OrderCart orderCart = (OrderCart)session.getAttribute("orderCart");
+            if(orderCart ==null)
+                orderCart = new OrderCart();
+        %>
     </head>
 
     <body>
@@ -130,7 +137,7 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <form action="home/products/cart" method="post">
+                                <form action="products/cart" method="post">
                                     <input type="hidden" name="type" value="7SHARE"/>
                                     <div class="text-center"><input class="bn11" type="submit" value="Buy it"/></div>
                                 </form>
@@ -155,7 +162,7 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                 <form action="home/products/cart" method="post">
+                                 <form action="products/cart" method="post">
                                      <input type="hidden" name="type" value="STANDARD"/>
                                     <div class="text-center"><input class="bn11" type="submit" value="Buy it"/></div>
                                 </form>
@@ -179,7 +186,7 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                 <form action="home/products/cart" method="post">
+                                 <form action="products/cart" method="post">
                                      <input type="hidden" name="type" value="2-END"/>
                                     <div class="text-center"><input class="bn11" type="submit" value="Buy it"/></div>
                                 </form>

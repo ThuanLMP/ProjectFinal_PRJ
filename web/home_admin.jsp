@@ -123,7 +123,7 @@
                         <div class="row">
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-primary text-white mb-4">
-                                    <div class="card-body">Doanh thu hom nay</div>
+                                    <div class="card-body">Doanh thu hôm nay</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         <a class="small text-white stretched-link" style="text-decoration: none" href="#">${sessionScope.revtoday} VND</a>
                                     </div>
@@ -131,7 +131,7 @@
                             </div>
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-warning text-white mb-4">
-                                    <div class="card-body">Doanh thu thang nay</div>
+                                    <div class="card-body">Doanh thu tháng này</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         <a class="small text-white stretched-link" style="text-decoration: none" href="#">${sessionScope.rev30day} VND</a>
                                     </div>
@@ -139,7 +139,7 @@
                             </div>
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-success text-white mb-4">
-                                    <div class="card-body">All User</div>
+                                    <div class="card-body">Số lượng khách hàng</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         <a class="small text-white stretched-link" style="text-decoration: none" href="#">${sessionScope.countUser} </a>
                                     </div>
@@ -147,7 +147,7 @@
                             </div>
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-danger text-white mb-4">
-                                    <div class="card-body" >Account Soild</div>
+                                    <div class="card-body" >Tài khoản đã bán</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         <a class="small text-white stretched-link" style="text-decoration: none" href="#">${sessionScope.countOrder}</a>
 
@@ -217,71 +217,12 @@
                                 </div>
                             </div>
 
-                            <div class="col-xl-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fa-solid fa-circle-plus"></i>
-                                        ADD NEW ACCOUNT NETFLIX
-                                    </div>
-                                    <div class="card-body">
-                                        <form class="validate-form" action="adduser" method="POST">
-                                            <div class="wrap-input100 validate-input" data-validate = "Username is required" >
-                                                <input class="input100" type="text" name="username" placeholder="User Name">
-                                                <span class="focus-input100"></span>
-                                                <span class="symbol-input100">
-                                                    <i class="fa fa-user" aria-hidden="true"></i>
-                                                </span>
-                                            </div>
-
-                                            <div class="wrap-input100 validate-input" data-validate = "Password is required">
-                                                <input class="input100" type="password" name="password" placeholder="Password">
-                                                <span class="focus-input100"></span>
-                                                <span class="symbol-input100">
-                                                    <i class="fa fa-lock" aria-hidden="true"></i>
-                                                </span>
-                                            </div>
-
-                                            <div class="wrap-input100 validate-input" data-validate = "Fullname is required" >
-                                                <input class="input100" type="text" name="fullname" placeholder="Full Name">
-                                                <span class="focus-input100"></span>
-                                                <span class="symbol-input100">
-                                                    <i class="fa fa-user-circle" aria-hidden="true"></i>                                                
-                                                </span>
-                                            </div>
-                                            <div class="wrap-input100 validate-input" data-validate = "Gmail is required" >
-                                                <input class="input100" type="text" name="gmail" placeholder="Gmail">
-                                                <span class="focus-input100"></span>
-                                                <span class="symbol-input100">
-                                                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                                                </span>
-                                            </div>
-                                            <div class="wrap-input100 validate-input" data-validate = "Phone is required" >
-                                                <input class="input100" type="text" name="sdt" placeholder="Phone Number">
-                                                <span class="focus-input100"></span>
-                                                <span class="symbol-input100">
-                                                    <i class="fa fa-phone" aria-hidden="true"></i>
-                                                </span>
-                                            </div>
-
-                                            <div class="container-login100-form-btn">
-                                                <button class="login100-form-btn">
-                                                    ADD
-                                                </button>
-                                            </div>
-
-                                        </form>
-
-                                    </div>
-
-                                </div>
-                            </div>
-
-
+                           
                         </div>
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                List Bill Active
+                                Danh sách hóa đơn còn hoạt động
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple">
