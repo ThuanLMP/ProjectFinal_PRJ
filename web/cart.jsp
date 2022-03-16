@@ -129,6 +129,31 @@
             .shopping-cart .summary button {
                 margin-top: 20px;
             }
+            .bn11 {
+                display: inline-block;
+                padding: 0.5em 1.7em;
+                margin: 0 0.1em 0.1em 0;
+                border: 0.16em solid rgba(255, 255, 255, 0);
+                background-color: rgb(80, 10, 172);
+                border-radius: 2em;
+                box-sizing: border-box;
+                text-decoration: none;
+                font-family: "Roboto", sans-serif;
+                font-weight: 300;
+                color: #ffffff;
+                text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
+                text-align: center;
+                transition: all 0.2s;
+            }
+
+            a.bn11:hover {
+                border-color: rgb(255, 255, 255);
+            }
+            .button{
+                padding-left: 100px;
+                padding-right: 100px;
+            }
+
 
             @media (min-width: 768px) {
                 .shopping-cart .items .product .info {
@@ -151,6 +176,7 @@
                     text-align: center;
                 }
             }
+
         </style>
         <%
             OrderCart orderCart = (OrderCart) session.getAttribute("orderCart");
@@ -167,7 +193,7 @@
                     </div>
                     <div class="content">
                         <div class="row">
-                            
+
                             <%
                                 if (orderCart == null) {
 
@@ -184,7 +210,7 @@
                                         <%
                                             for (OrderDetail detail : orderCart.getDetails()) {
                                         %>
-                                        
+
                                         <div class="row">
                                             <div class="col-md-2">
 
@@ -225,9 +251,7 @@
 
                                     </div>
                                 </div>
-                                <div>
-                                    <a href="products.jsp">Quay lại cửa hàng</a>
-                                </div>
+
                             </div>
 
                             <div class="col-md-12 col-lg-4">
@@ -241,7 +265,14 @@
                                             class="price">0 VND</span></div>
                                     <div class="summary-item"><span class="text">Thành tiền: </span><span class="price"><%= orderCart.getTotal()%> VND</span>
                                     </div>
-                                    <button type="button" class="btn btn-primary btn-lg btn-block">Thanh toán</button>
+                                    <div>
+                                        <form action="cart/payup" method="get">
+                                            
+                                            <input type="submit" class="btn btn-primary btn-lg btn-block" value="Thanh toán" />
+                                        </form>
+                                    </div>
+
+
                                 </div>
                             </div>
                             <%}%>
@@ -252,6 +283,9 @@
                     </div>
                 </div>
             </section>
+            <div class="button">
+                <a type="button" class="btn btn-primary btn-lg btn-block" href="products.jsp">Quay lại cửa hàng</a>
+            </div>
         </main>
     </body>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>

@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.Account_netf;
 import model.Order;
 
 /**
@@ -103,13 +104,12 @@ public class BillDBContext extends DBContext {
 
             long millis = System.currentTimeMillis();
             Date date = new java.sql.Date(millis);
-             String sql = "SELECT u.fullname, b.username,u.gmail,u.sdt,a.gmailacc,a.slot,b.startdate,b.time,a.type FROM Bill b inner join [user] u\n"
+            String sql = "SELECT u.fullname, b.username,u.gmail,u.sdt,a.gmailacc,a.slot,b.startdate,b.time,a.type FROM Bill b inner join [user] u\n"
                     + "on b.username=u.username\n"
                     + "inner join Account a\n"
                     + "on b.aid=a.aid\n"
                     + "WHERE [time]*30-DATEDIFF(day,startdate,?) >0 ;\n";
 
-            
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setDate(1, date);
             ResultSet rs = stm.executeQuery();
@@ -129,18 +129,80 @@ public class BillDBContext extends DBContext {
         } catch (SQLException ex) {
             Logger.getLogger(BillDBContext.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return orders;  
+        return orders;
     }
-    
-   
+    public int getIdOrder(){
+        int n = 0;
+        try {
+            String sql = "select MAX(billid) as maxid from Bill";
 
-    
-    public static void main(String[] args) {
-        BillDBContext b = new BillDBContext();
-        ArrayList<Order> orders = b.getOdersActive();
-        for(Order o:orders){
-            System.out.println(o.toString());
+            PreparedStatement stm = connection.prepareStatement(sql);
+            
+            ResultSet rs = stm.executeQuery();
+
+            while (rs.next()) {
+                String check = rs.getString("maxid");
+                n = Integer.parseInt(check);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDBContext.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        return n;
     }
-     
+
+    public void insertOrder(int month,String username, Account_netf acc) {
+        BillDBContext db = new BillDBContext();
+        int n = db.getIdOrder();
+        long millis = System.currentTimeMillis();
+        Date date = new java.sql.Date(millis);
+        String sql = "INSERT INTO [Bill]\n"
+                + "           ([billid]\n"
+                + "           ,[username]\n"
+                + "           ,[aid]\n"
+                + "           ,[startdate]\n"
+                + "           ,[time])\n"
+                + "     VALUES\n"
+                + "           ?\n"
+                + "           ,?\n"
+                + "           ,?\n"
+                + "           ,?\n"
+                + "           ,?";
+
+        PreparedStatement stm = null;
+        try {
+            stm = connection.prepareStatement(sql);
+            stm.setInt(1,n+1);
+            stm.setString(2, username);
+            stm.setInt(3, acc.getId());
+            stm.setDate(4, date);
+            stm.setInt(5,month);
+            stm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(BillDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (stm != null) {
+                try {
+                    stm.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(BillDBContext.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(BillDBContext.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+
+    }
+
+    public static void main(String[] args) {
+        BillDBContext db = new BillDBContext();
+        int n = db.getIdOrder();
+        System.out.println(n);
+    }
+
 }

@@ -145,6 +145,7 @@ public final class home_005fuser_jsp extends org.apache.jasper.runtime.HttpJspBa
       if (_jspx_meth_c_if_0(_jspx_page_context))
         return;
       out.write("\n");
+      out.write("                   \n");
       out.write("\n");
       out.write("                    ");
       if (_jspx_meth_c_if_1(_jspx_page_context))
@@ -178,7 +179,7 @@ public final class home_005fuser_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("                                    >\n");
       out.write("                                    <a\n");
       out.write("                                        class=\"btn btn-danger btn-lg px-4 me-sm-3\"\n");
-      out.write("                                        href=\"#\"\n");
+      out.write("                                        href=\"./home/products\"\n");
       out.write("                                        >Mua ngay</a\n");
       out.write("                                    >\n");
       out.write("                                    <a\n");
@@ -325,14 +326,24 @@ public final class home_005fuser_jsp extends org.apache.jasper.runtime.HttpJspBa
       do {
         out.write("\n");
         out.write("\n");
-        out.write("                        <ul class=\"navbar-nav ms-auto ms-md-0 me-3 me-lg-4\">\n");
-        out.write("                            <li class=\"nav-item dropdown\">\n");
-        out.write("                                <a class=\"nav-link dropdown-toggle\" id=\"navbarDropdown\" href=\"#\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\"><i class=\"fas fa-user fa-fw\"></i></a>\n");
-        out.write("                                <ul class=\"dropdown-menu dropdown-menu-end\" aria-labelledby=\"navbarDropdown\">\n");
-        out.write("                                    <li><a class=\"dropdown-item\" href=\"./logout\">Logout</a></li>\n");
-        out.write("                                </ul>\n");
-        out.write("                            </li>\n");
-        out.write("                        </ul>\n");
+        out.write("                        <nav id=\"navbar\">\n");
+        out.write("                            <a\n");
+        out.write("                                id=\"login-btn\"\n");
+        out.write("                                class=\"btn btn-secondary\"\n");
+        out.write("                                href=\"#\"  \n");
+        out.write("                                >\n");
+        out.write("                                ");
+        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${sessionScope.user.getUsername()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+        out.write("\n");
+        out.write("                            </a>\n");
+        out.write("                            <a\n");
+        out.write("                                href=\"./logout\"\n");
+        out.write("                                id=\"login-btn\"\n");
+        out.write("                                class=\"btn btn-outline-secondary\"\n");
+        out.write("                                >\n");
+        out.write("                                Logout\n");
+        out.write("                            </a>\n");
+        out.write("                        </nav>\n");
         out.write("                    ");
         int evalDoAfterBody = _jspx_th_c_if_0.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)

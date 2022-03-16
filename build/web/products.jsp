@@ -201,11 +201,7 @@
             </div>
 
         </section>
-        <div>
-            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                <div class="text-center"><a href="./cart.jsp" class="bn11">Pay Up</a></div>
-            </div>
-        </div>
+        
         <!-- Footer-->
         <footer class="py-5 bg-dark">
             <div class="container">

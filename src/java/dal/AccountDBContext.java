@@ -54,7 +54,6 @@ public class AccountDBContext extends DBContext {
         }
     }
      */
-
     public ArrayList<Account_netf> getAccs() {
         ArrayList<Account_netf> acc_netfs = new ArrayList<>();
         try {
@@ -102,6 +101,7 @@ public class AccountDBContext extends DBContext {
     }
 
     public Account_netf getAcc(int id) {
+
         Account_netf acc = new Account_netf();
         try {
             String sql = "select  aid,gmailacc,password,purchaseprice,saleprice,slot,type,active  from Account where aid=?";
@@ -128,6 +128,39 @@ public class AccountDBContext extends DBContext {
         return acc;
     }
 
+    public void updateAcc(int id) {
+        String sql = "UPDATE [Account]\n"
+                + "   SET\n"
+                + "      [active] = 1\n"
+                + " WHERE aid = ?;";
+
+        PreparedStatement stm = null;
+        try {
+            stm = connection.prepareStatement(sql);
+            stm.setInt(1, id);
+
+            stm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (stm != null) {
+                try {
+                    stm.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(AccountDBContext.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(AccountDBContext.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+
+    }
+    
     public static void main(String[] args) {
         AccountDBContext db = new AccountDBContext();
         int check = db.getMinId("2-END");
