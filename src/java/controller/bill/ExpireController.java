@@ -38,8 +38,8 @@ public class ExpireController extends BaseAuthController {
             throws ServletException, IOException {
         BillDBContext db = new BillDBContext();
         ArrayList<Order> orders_expire = db.getExpires();
-        request.setAttribute("expire", orders_expire);
-       request.getRequestDispatcher("../view/admin/expire.jsp").forward(request, response);
+        request.setAttribute("orders_expire", orders_expire);
+       request.getRequestDispatcher("../view/admin/orders_expire.jsp").forward(request, response);
     }
 
     /**

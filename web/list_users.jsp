@@ -1,6 +1,6 @@
 <%-- 
-    Document   : newjsp
-    Created on : Feb 27, 2022, 12:20:55 AM
+    Document   : list_users
+    Created on : Mar 5, 2022, 2:48:37 PM
     Author     : ITACHI
 --%>
 
@@ -96,7 +96,7 @@
                             </a>
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" >                                   
-                                    <a class="nav-link" href="list_user">List User</a>                                                                                                      
+                                    <a class="nav-link" href="admin/list_user">List User</a>                                                                                                      
                                     <a class="nav-link" href="admin/list_account">List Account</a>                                                                                                 
                                 </nav>
                             </div>
@@ -120,140 +120,8 @@
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Trần Văn Thuận</li>
                         </ol>
-                        <div class="row">
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-primary text-white mb-4">
-                                    <div class="card-body">Doanh thu hôm nay</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" style="text-decoration: none" href="#">${sessionScope.revtoday} VND</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-warning text-white mb-4">
-                                    <div class="card-body">Doanh thu tháng này</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" style="text-decoration: none" href="#">${sessionScope.rev30day} VND</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-success text-white mb-4">
-                                    <div class="card-body">Tổng doanh thu</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" style="text-decoration: none" href="#">${sessionScope.revall} VND </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-danger text-white mb-4">
-                                    <div class="card-body" >Tài khoản đã bán</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" style="text-decoration: none" href="#">${sessionScope.countOrder}</a>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-primary text-white mb-4">
-                                    <div class="card-body">Lợi nhuận hôm nay</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" style="text-decoration: none" href="#">${sessionScope.profitday} VND</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-warning text-white mb-4">
-                                    <div class="card-body">Lợi nhuận tháng này</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" style="text-decoration: none" href="#">${sessionScope.profit30day} VND</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-success text-white mb-4">
-                                    <div class="card-body">Tổng lợi nhuận</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" style="text-decoration: none" href="#">${sessionScope.profitall} VND </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-danger text-white mb-4">
-                                    <div class="card-body" >Tài khoản sắp hết hạn</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" style="text-decoration: none" href="#">${sessionScope.countOrderExpire}</a>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xl-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fa-solid fa-circle-plus"></i>
-                                        ADD NEW USER
-                                    </div>
-
-                                    <div class="card-body">
-
-                                        <form class="validate-form" action="adduser" method="POST">
-                                            <div class="wrap-input100 validate-input" data-validate = "Username is required" >
-                                                <input class="input100" type="text" name="username" placeholder="User Name">
-                                                <span class="focus-input100"></span>
-                                                <span class="symbol-input100">
-                                                    <i class="fa fa-user" aria-hidden="true"></i>
-                                                </span>
-                                            </div>
-
-                                            <div class="wrap-input100 validate-input" data-validate = "Password is required">
-                                                <input class="input100" type="password" name="password" placeholder="Password">
-                                                <span class="focus-input100"></span>
-                                                <span class="symbol-input100">
-                                                    <i class="fa fa-lock" aria-hidden="true"></i>
-                                                </span>
-                                            </div>
-
-                                            <div class="wrap-input100 validate-input" data-validate = "Fullname is required" >
-                                                <input class="input100" type="text" name="fullname" placeholder="Full Name">
-                                                <span class="focus-input100"></span>
-                                                <span class="symbol-input100">
-                                                    <i class="fa fa-user-circle" aria-hidden="true"></i>                                                
-                                                </span>
-                                            </div>
-                                            <div class="wrap-input100 validate-input" data-validate = "Gmail is required" >
-                                                <input class="input100" type="text" name="gmail" placeholder="Gmail">
-                                                <span class="focus-input100"></span>
-                                                <span class="symbol-input100">
-                                                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                                                </span>
-                                            </div>
-                                            <div class="wrap-input100 validate-input" data-validate = "Phone is required" >
-                                                <input class="input100" type="text" name="sdt" placeholder="Phone Number">
-                                                <span class="focus-input100"></span>
-                                                <span class="symbol-input100">
-                                                    <i class="fa fa-phone" aria-hidden="true"></i>
-                                                </span>
-                                            </div>
-
-                                            <div class="container-login100-form-btn">
-                                                <button class="login100-form-btn">
-                                                    ADD
-                                                </button>
-                                            </div>
-
-                                        </form>
-
-                                    </div>
-
-                                </div>
-                            </div>
-
-
-                        </div>
+                        
+                       
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
@@ -263,29 +131,25 @@
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
-                                            <th>Full Name</th>
+                                            
                                             <th>User Name</th>
+                                            <th>Password</th>
+                                            <th>Full Name</th>
                                             <th>Gmail User</th>
                                             <th>Phone Number</th>
-                                            <th>Account Netflix</th>
-                                            <th>Slot</th>
-                                            <th>Start Date</th>
-                                            <th>Time</th>
-                                            <th>Type</th>
+                                            
                                         </tr>
 
-                                        <c:forEach items="${orders}" var="o">
+                                        <c:forEach items="${users}" var="u">
                                             <tr>
 
-                                                <td>${o.getFullname()}</td>
-                                                <td>${o.getUsername()}</td>
-                                                <td>${o.getGmail()}</td>
-                                                <td>${o.getSdt()}</td>
-                                                <td>${o.getAccNetf()}</td>
-                                                <td>${o.getSlot()}</td>
-                                                <td>${o.getStartDate()}</td>
-                                                <td>${o.getTime()}</td>
-                                                <td>${o.getType()}</td>
+                                                
+                                                <td>${u.getUsername()}</td>
+                                                <td>${u.getPassword()}</td>
+                                                <td>${u.getFullname()}</td>
+                                                <td>${u.getGmail()}</td>
+                                                <td>${u.getSdt()}</td>
+                                               
                                             </tr>
                                         </c:forEach>
 

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : expire
-    Created on : Feb 21, 2022, 8:22:27 AM
+    Document   : order_expire
+    Created on : Mar 17, 2022, 10:16:05 PM
     Author     : ITACHI
 --%>
 
@@ -12,10 +12,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-         <% ArrayList<Order> orders = (ArrayList<Order>) request.getAttribute("expire");%>
+         <% ArrayList<Order> orders_expire = (ArrayList<Order>) request.getAttribute("orders_expire");%>
     </head>
     <body>
-        <h1>List oders</h1>
+         <h1>List oders expire</h1>
         <table border="1px">
             <tr>
                 <td>STT</td>
@@ -32,7 +32,7 @@
             
             <% 
                 int i=1;
-                for (Order o : orders) {
+                for (Order o : orders_expire) {
             %>
             <tr>
                 <td><%=i%></td>

@@ -131,13 +131,14 @@ public class BillDBContext extends DBContext {
         }
         return orders;
     }
-    public int getIdOrder(){
+
+    public int getIdOrder() {
         int n = 0;
         try {
             String sql = "select MAX(billid) as maxid from Bill";
 
             PreparedStatement stm = connection.prepareStatement(sql);
-            
+
             ResultSet rs = stm.executeQuery();
 
             while (rs.next()) {
@@ -151,32 +152,35 @@ public class BillDBContext extends DBContext {
         return n;
     }
 
-    public void insertOrder(int month,String username, Account_netf acc) {
+    public void insertOrder(int month, String username, Account_netf acc) {
+
         BillDBContext db = new BillDBContext();
         int n = db.getIdOrder();
         long millis = System.currentTimeMillis();
         Date date = new java.sql.Date(millis);
-        String sql = "INSERT INTO [Bill]\n"
+
+        String sql = "INSERT INTO [dbo].[Bill]\n"
                 + "           ([billid]\n"
                 + "           ,[username]\n"
                 + "           ,[aid]\n"
                 + "           ,[startdate]\n"
                 + "           ,[time])\n"
-                + "     VALUES\n"
+                + "     VALUES(\n"
                 + "           ?\n"
                 + "           ,?\n"
                 + "           ,?\n"
                 + "           ,?\n"
-                + "           ,?";
+                + "           ,?)";
 
         PreparedStatement stm = null;
         try {
             stm = connection.prepareStatement(sql);
-            stm.setInt(1,n+1);
+            stm.setInt(1, n + 1);
             stm.setString(2, username);
             stm.setInt(3, acc.getId());
             stm.setDate(4, date);
-            stm.setInt(5,month);
+            stm.setInt(5, month);
+
             stm.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(BillDBContext.class.getName()).log(Level.SEVERE, null, ex);
@@ -200,9 +204,7 @@ public class BillDBContext extends DBContext {
     }
 
     public static void main(String[] args) {
-        BillDBContext db = new BillDBContext();
-        int n = db.getIdOrder();
-        System.out.println(n);
+
     }
 
 }

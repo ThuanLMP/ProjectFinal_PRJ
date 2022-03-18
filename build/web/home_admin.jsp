@@ -37,7 +37,7 @@
         <link rel="stylesheet" type="text/css" href="css/util.css">
         <link rel="stylesheet" type="text/css" href="css/main.css">
         <!--===============================================================================================-->
-        
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
         <script src="https://kit.fontawesome.com/08353d1bef.js" crossorigin="anonymous"></script>
 
@@ -96,7 +96,7 @@
                             </a>
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" >                                   
-                                    <a class="nav-link" href="admin/list_user">List User</a>                                                                                                      
+                                    <a class="nav-link" href="list_user">List User</a>                                                                                                      
                                     <a class="nav-link" href="admin/list_account">List Account</a>                                                                                                 
                                 </nav>
                             </div>
@@ -139,9 +139,9 @@
                             </div>
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-success text-white mb-4">
-                                    <div class="card-body">Số lượng khách hàng</div>
+                                    <div class="card-body">Tổng doanh thu</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" style="text-decoration: none" href="#">${sessionScope.countUser} </a>
+                                        <a class="small text-white stretched-link" style="text-decoration: none" href="#">${sessionScope.revall} VND </a>
                                     </div>
                                 </div>
                             </div>
@@ -150,6 +150,41 @@
                                     <div class="card-body" >Tài khoản đã bán</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         <a class="small text-white stretched-link" style="text-decoration: none" href="#">${sessionScope.countOrder}</a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-primary text-white mb-4">
+                                    <div class="card-body">Lợi nhuận hôm nay</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" style="text-decoration: none" href="#">${sessionScope.profitday} VND</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-warning text-white mb-4">
+                                    <div class="card-body">Lợi nhuận tháng này</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" style="text-decoration: none" href="#">${sessionScope.profit30day} VND</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-success text-white mb-4">
+                                    <div class="card-body">Tổng lợi nhuận</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" style="text-decoration: none" href="#">${sessionScope.profitall} VND </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-danger text-white mb-4">
+                                    <div class="card-body" >Tài khoản sắp hết hạn</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" style="text-decoration: none" href="#">${sessionScope.countOrderExpire}</a>
 
                                     </div>
                                 </div>
@@ -217,7 +252,7 @@
                                 </div>
                             </div>
 
-                           
+
                         </div>
                         <div class="card mb-4">
                             <div class="card-header">

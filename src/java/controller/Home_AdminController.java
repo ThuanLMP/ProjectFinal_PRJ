@@ -41,23 +41,35 @@ public class Home_AdminController extends BaseAuthController {
         
         BillDBContext dbbill = new BillDBContext();
         BusinessDBContext dbbusiness = new BusinessDBContext();
+        
         int revenueToDay = dbbusiness.getRevenueToDay();
-        int revenue30Day = dbbusiness.getProfit30day();
+        int revenue30Day = dbbusiness.getRevenue30day();
+        int revenueAll = dbbusiness.getAllRevenue();
+        int profitAll = dbbusiness.getAllProfit();
+        int profitToDay = dbbusiness.getProfitToDay();
+        int profit30Day = dbbusiness.getProfit30day();
+        
         UserDBContext dbuser = new UserDBContext();
-        ArrayList<User> users = dbuser.getUsers();
-        int countUser = users.size();      
+        
         ArrayList<Order> orders1 = dbbill.getOdersActive();       
         ArrayList<Order> orders2 = dbbill.getOders();
-        int countOrder = orders2.size();
+        ArrayList<Order> orders3 = dbbill.getExpires();
+        
+        int countOrderExpires = orders3.size();
+        int countOrder = orders1.size();
         
         
         HttpSession session = request.getSession();
         
         session.setAttribute("countOrder",countOrder);
-        session.setAttribute("countUser", countUser);
+        session.setAttribute("countOrderExpire",countOrderExpires);
         session.setAttribute("orders", orders1);
         session.setAttribute("rev30day", revenue30Day);
         session.setAttribute("revtoday", revenueToDay);
+        session.setAttribute("revall", revenueAll);
+        session.setAttribute("profitall", profitAll);
+        session.setAttribute("profitday", profitToDay);
+        session.setAttribute("profit30day", profit30Day);
         response.sendRedirect("../home_admin.jsp");
         
     }

@@ -13,5 +13,9 @@
     </head>
     <body>
         <h1>Thanh toán thành công. Vui lòng kiểm tra mail của bạn để nhận tài khoản</h1>
+        <form action="home" method="get">
+            <input type="submit" value="Quay lại cửa hàng"/>
+        </form>
+        
     </body>
 </html>

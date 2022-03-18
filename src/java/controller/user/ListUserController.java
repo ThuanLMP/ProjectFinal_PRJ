@@ -19,18 +19,26 @@ import model.User;
  *
  * @author ITACHI
  */
-public class UserController extends HttpServlet {
+public class ListUserController extends HttpServlet {
 
    
 
-   
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        UserDBContext db = new UserDBContext();
+         UserDBContext db = new UserDBContext();
         ArrayList<User> users = db.getUsers();
         request.setAttribute("users", users);
-        request.getRequestDispatcher("../view/admin/list_users.jsp").forward(request, response);
+        request.getRequestDispatcher("list_users.jsp").forward(request, response);
     }
 
     /**

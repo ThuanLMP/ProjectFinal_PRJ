@@ -131,7 +131,7 @@ public class AccountDBContext extends DBContext {
     public void updateAcc(int id) {
         String sql = "UPDATE [Account]\n"
                 + "   SET\n"
-                + "      [active] = 1\n"
+                + "      [active] = 0\n"
                 + " WHERE aid = ?;";
 
         PreparedStatement stm = null;
@@ -163,7 +163,7 @@ public class AccountDBContext extends DBContext {
     
     public static void main(String[] args) {
         AccountDBContext db = new AccountDBContext();
-        int check = db.getMinId("2-END");
+        int check = db.getMinId("");
         Account_netf acc = db.getAcc(check);
         System.out.println(acc.toString());
     }

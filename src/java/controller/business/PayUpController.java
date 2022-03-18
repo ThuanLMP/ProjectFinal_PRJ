@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Account_netf;
 import model.Order;
 import model.OrderCart;
@@ -31,18 +32,20 @@ public class PayUpController extends HttpServlet {
 
         User user = (User) request.getSession().getAttribute("user");
         OrderCart orderCart = (OrderCart) request.getSession().getAttribute("orderCart");
-        
+
         AccountDBContext dba = new AccountDBContext();
         BillDBContext dbb = new BillDBContext();
+
         for (OrderDetail detail : orderCart.getDetails()) {
-            
+
             int check = dba.getMinId(detail.getAccount().getType());
             Account_netf acc = dba.getAcc(check);
-            dba.updateAcc(acc.getId());
+            dba.updateAcc(check);
             dbb.insertOrder(detail.getMonth(), user.getUsername(), acc);
-            
+            HttpSession session = request.getSession();
+            session.removeAttribute("orderCart");
         }
-        //response.sendRedirect("../pay_up.jsp");
+        response.sendRedirect("../pay_up.jsp");
     }
 
     /**
