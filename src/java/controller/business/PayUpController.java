@@ -32,19 +32,22 @@ public class PayUpController extends HttpServlet {
 
         User user = (User) request.getSession().getAttribute("user");
         OrderCart orderCart = (OrderCart) request.getSession().getAttribute("orderCart");
-
         AccountDBContext dba = new AccountDBContext();
         BillDBContext dbb = new BillDBContext();
-
-        for (OrderDetail detail : orderCart.getDetails()) {
-
-            int check = dba.getMinId(detail.getAccount().getType());
-            Account_netf acc = dba.getAcc(check);
+        
+        for (int i = 0; i < orderCart.getDetails().size(); i++) {
+            
+            OrderDetail detail = orderCart.getDetails().get(i);          
+            int check = dba.getMinId(detail.getAccount().getType().trim());
+            Account_netf acc = dba.getAcc(check);          
             dba.updateAcc(check);
             dbb.insertOrder(detail.getMonth(), user.getUsername(), acc);
-            HttpSession session = request.getSession();
-            session.removeAttribute("orderCart");
+            
         }
+
+        HttpSession session = request.getSession();
+        session.removeAttribute("orderCart");
+
         response.sendRedirect("../pay_up.jsp");
     }
 

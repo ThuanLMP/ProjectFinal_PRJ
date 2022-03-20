@@ -27,7 +27,7 @@
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-pic js-tilt" data-tilt>
-					<img src="images/1.jpg" alt="IMG">
+					<img src="images/netflixlogin.jpg" alt="IMG">
 				</div>
 
                             <form class="login100-form validate-form" action="signup" method="POST">
@@ -81,8 +81,8 @@
 					
 
 					<div class="text-center p-t-136">
-						<a class="txt2" href="signup">
-							Create your Account
+						<a class="txt2" href="login">
+							Login
 							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
 						</a>
 					</div>

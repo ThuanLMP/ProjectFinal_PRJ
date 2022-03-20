@@ -78,14 +78,15 @@
                             <div class="sb-sidenav-menu-heading">Function</div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-list"></i></i></div>
-                                List Orders
+                                List
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
 
-                                    <a class="nav-link" href="admin/orders_active">Orders Active</a>
-                                    <a class="nav-link" href="admin/expire">Orders Expire</a>
+                                    <a class="nav-link" href="order_active">Orders Active</a>
+                                    <a class="nav-link" href="orders_expire">Orders Expire</a>
+                                    <a class="nav-link" href="listacc">List Account</a> 
 
                                 </nav>
                             </div>
@@ -96,19 +97,11 @@
                             </a>
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" >                                   
-                                    <a class="nav-link" href="admin/list_user">List User</a>                                                                                                      
-                                    <a class="nav-link" href="admin/list_account">List Account</a>                                                                                                 
+                                    <a class="nav-link" href="listUser">List User</a>                                                                                                      
+
                                 </nav>
                             </div>
-                            <div class="sb-sidenav-menu-heading">FORM</div>
-                            <a class="nav-link" href="#">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Add new User
-                            </a>
-                            <a class="nav-link" href="#">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Add new Bill
-                            </a>
+
                         </div>
 
                 </nav>
@@ -120,38 +113,51 @@
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Trần Văn Thuận</li>
                         </ol>
-                        
-                       
+
+
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                Danh sách hóa đơn còn hoạt động
+                                Danh sách người dùng đã đăng kí
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple">
+                                   
+                                        
                                     <thead>
                                         <tr>
-                                            
                                             <th>User Name</th>
                                             <th>Password</th>
                                             <th>Full Name</th>
                                             <th>Gmail User</th>
                                             <th>Phone Number</th>
-                                            
                                         </tr>
+                                    </thead>
 
+                                    <tfoot>
+                                        <tr>
+                                            <th>User Name</th>
+                                            <th>Password</th>
+                                            <th>Full Name</th>
+                                            <th>Gmail User</th>
+                                            <th>Phone Number</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
                                         <c:forEach items="${users}" var="u">
                                             <tr>
 
-                                                
+
                                                 <td>${u.getUsername()}</td>
                                                 <td>${u.getPassword()}</td>
                                                 <td>${u.getFullname()}</td>
                                                 <td>${u.getGmail()}</td>
                                                 <td>${u.getSdt()}</td>
-                                               
+
                                             </tr>
                                         </c:forEach>
+                                    </tbody>
+
 
                                 </table>
                             </div>

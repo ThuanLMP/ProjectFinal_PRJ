@@ -1,6 +1,6 @@
 <%-- 
-    Document   : list_users
-    Created on : Mar 5, 2022, 2:48:37 PM
+    Document   : list_account
+    Created on : Mar 18, 2022, 9:56:30 AM
     Author     : ITACHI
 --%>
 
@@ -115,50 +115,59 @@
                         </ol>
 
 
+
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                Danh sách người dùng đã đăng kí
+                                Danh sách tài khoản Netflix
                             </div>
                             <div class="card-body">
+
                                 <table id="datatablesSimple">
-                                   
-                                        
+                                    
                                     <thead>
                                         <tr>
-                                            <th>User Name</th>
+                                            <th>ID</th>
+                                            <th>Gmail</th>
                                             <th>Password</th>
-                                            <th>Full Name</th>
-                                            <th>Gmail User</th>
-                                            <th>Phone Number</th>
+                                            <th>Purchase Price</th>
+                                            <th>Sale Price</th>
+                                            <th>Slot</th>
+                                            <th>Type</th>
+                                            <th>Active</th>
                                         </tr>
                                     </thead>
-
+                                    
                                     <tfoot>
                                         <tr>
-                                            <th>User Name</th>
+                                            <th>ID</th>
+                                            <th>Gmail</th>
                                             <th>Password</th>
-                                            <th>Full Name</th>
-                                            <th>Gmail User</th>
-                                            <th>Phone Number</th>
+                                            <th>Purchase Price</th>
+                                            <th>Sale Price</th>
+                                            <th>Slot</th>
+                                            <th>Type</th>
+                                            <th>Active</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        <c:forEach items="${users}" var="u">
-                                            <tr>
+                                        <c:forEach items="${accs}" var="a">
+                                        <tr>
 
 
-                                                <td>${u.getUsername()}</td>
-                                                <td>${u.getPassword()}</td>
-                                                <td>${u.getFullname()}</td>
-                                                <td>${u.getGmail()}</td>
-                                                <td>${u.getSdt()}</td>
+                                            <td>${a.getId()}</td>
+                                            <td>${a.getGmail()}</td>
+                                            <td>${a.getPassword()}</td>
+                                            <td>${a.getPurPrice()}</td>
+                                            <td>${a.getSalePrice()}</td>
+                                            <td>${a.getSlot()}</td>
+                                            <td>${a.getType()}</td>
+                                            <td>${a.getActive()}</td>
+                                        </tr>
+                                    </c:forEach>
 
-                                            </tr>
-                                        </c:forEach>
                                     </tbody>
-
-
+                                    
                                 </table>
                             </div>
                         </div>
@@ -207,3 +216,4 @@
 
     </body>
 </html>
+

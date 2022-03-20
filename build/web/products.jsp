@@ -25,7 +25,7 @@
             .content {
                 height: 200px;
                 padding-top: 20px;
-                background-color: azure;
+                background-color:#002752;
             }
 
             img {
@@ -52,12 +52,16 @@
             a.bn11:hover {
                 border-color: rgb(255, 255, 255);
             }
+            .inf{
+                padding: 10px;
+            }
         </style>
         <%
-         
-            OrderCart orderCart = (OrderCart)session.getAttribute("orderCart");
-            if(orderCart ==null)
+
+            OrderCart orderCart = (OrderCart) session.getAttribute("orderCart");
+            if (orderCart == null) {
                 orderCart = new OrderCart();
+            }
         %>
     </head>
 
@@ -74,13 +78,7 @@
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="./home">Home</a></li>
 
                     </ul>
-                    <form class="d-flex">
-                        <button class="btn btn-outline-dark" type="submit">
-                            <i class="bi-cart-fill me-1"></i>
-                            Cart
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                        </button>
-                    </form>
+
                 </div>
             </div>
         </nav>
@@ -97,17 +95,17 @@
                     <div class="col-md-4 card text-info content">
 
                         <h5>Giá rẻ nhất</h5>
-                        Cam kết giá rẻ nhất thị trường Việt Nam, chỉ với từ 60k/tháng rẻ gấp 4 lần so với giá gốc 260k/tháng
+                        Cam kết giá rẻ nhất thị trường Việt Nam, chỉ với từ 32k/tháng rẻ gấp 4 lần so với giá gốc 260k/tháng
                     </div>
 
                     <div class="col-md-4 card text-warning content">
-                        <h5>Chất lượng 4k</h5>
-                        Cam kết chỉ bán tài khoản Netflix Premium 4K gói 3 tháng, 6 tháng Netflix chính chủ
+                        <h5>Đa dạng tài khoản</h5>
+                        Cung cấp đa dạng các loại tài khoản phù hợp với nhu cầu và giá tiền
                     </div>
 
                     <div class="col-md-4 card text-danger content">
                         <h5>Cam kết hài lòng</h5>
-                        100% tài khoản Netflix chính chủ. Khách hàng sử dụng slot riêng biệt trên mỗi tk. Bảo hành 1 đổi 1.
+                        Khách hàng sử dụng tài khoản nếu có lỗi sẽ được bảo hành sớm nhất có thể từ nhân viên shop
                     </div>
 
                 </div>
@@ -123,9 +121,13 @@
                     <div class="col mb-5">
                         <div class="card h-100">
                             <!-- Product image-->
-                            <img class="card-img-top"
-                                 src="https://cdn.divineshop.vn/image/catalog/Anh/Banner/NETFLIX1406.png?hash=1623646686"
-                                 alt="..." />
+                            <div class="inf">
+                                <h5> - Không có profile riêng </h5>
+                                <h5> - Đăng nhập trên 1 thiết bị </h5>
+                                <h5> - Có thể bị quá tải thiết bị</h5>
+                                <h5> - Không thể xem online, phải dowload về</h5>
+                            </div>
+
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
@@ -141,16 +143,19 @@
                                     <input type="hidden" name="type" value="7SHARE"/>
                                     <div class="text-center"><input class="bn11" type="submit" value="Buy it"/></div>
                                 </form>
-                               
+
                             </div>
                         </div>
                     </div>
                     <div class="col mb-5">
                         <div class="card h-100">
                             <!-- Product image-->
-                            <img class="card-img-top"
-                                 src="https://cdn.divineshop.vn/image/catalog/Anh/Banner/NETFLIX1406.png?hash=1623646686"
-                                 alt="..." />
+                            <div class="inf">
+                                <h5> - Trải nghiệm ổn định như gói 2-END </h5>
+                                <h5> - Có thể xem online </h5>
+                                <h5> - Thường xuyên xuất hiện thông báo thanh toán</h5>
+                              
+                            </div>
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
@@ -162,8 +167,8 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                 <form action="products/cart" method="post">
-                                     <input type="hidden" name="type" value="STANDARD"/>
+                                <form action="products/cart" method="post">
+                                    <input type="hidden" name="type" value="STANDARD"/>
                                     <div class="text-center"><input class="bn11" type="submit" value="Buy it"/></div>
                                 </form>
                             </div>
@@ -172,10 +177,12 @@
                     <div class="col mb-5">
                         <div class="card h-100">
                             <!-- Product image-->
-                            <img class="card-img-top"
-                                 src="https://cdn.divineshop.vn/image/catalog/Anh/Banner/NETFLIX1406.png?hash=1623646686"
-                                 alt="..." />
-                            <!-- Product details-->
+                            <div class="inf">
+                                <h5> - Có profile riêng </h5>
+                                <h5> - Được đặt PIN bảo vệ </h5>
+                                <h5> - Đăng nhập trên nhiều thiết bị</h5>
+                                <h5> - Ổn định, sử dụng lâu dài</h5>
+                            </div>
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
@@ -186,8 +193,8 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                 <form action="products/cart" method="post">
-                                     <input type="hidden" name="type" value="2-END"/>
+                                <form action="products/cart" method="post">
+                                    <input type="hidden" name="type" value="2-END"/>
                                     <div class="text-center"><input class="bn11" type="submit" value="Buy it"/></div>
                                 </form>
                             </div>
@@ -201,7 +208,7 @@
             </div>
 
         </section>
-        
+
         <!-- Footer-->
         <footer class="py-5 bg-dark">
             <div class="container">

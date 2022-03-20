@@ -19,8 +19,9 @@ import model.Account_netf;
  *
  * @author ITACHI
  */
-public class ListAccController extends HttpServlet {
+public class ListAccountController extends HttpServlet {
 
+  
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -33,11 +34,10 @@ public class ListAccController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        AccountDBContext db = new AccountDBContext();
+         AccountDBContext db = new AccountDBContext();
         ArrayList<Account_netf> accs = db.getAccs();
         request.setAttribute("accs", accs);
-        request.getRequestDispatcher("../view/admin/list_accounts.jsp").forward(request, response);
+        request.getRequestDispatcher("list_account.jsp").forward(request, response);
 
     }
 
@@ -52,7 +52,7 @@ public class ListAccController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
     }
 
     /**

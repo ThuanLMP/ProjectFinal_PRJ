@@ -105,10 +105,7 @@ public class Order {
         this.type = type;
     }
 
-    @Override
-    public String toString() {
-        return "Order{" + "fullname=" + fullname + ", username=" + username + ", gmail=" + gmail + ", sdt=" + sdt + ", accNetf=" + accNetf + ", slot=" + slot + ", time=" + time + ", startDate=" + startDate + ", price=" + price + ", type=" + type + '}';
-    }
+   
     
     
     

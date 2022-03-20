@@ -1,6 +1,6 @@
 <%-- 
-    Document   : list_users
-    Created on : Mar 5, 2022, 2:48:37 PM
+    Document   : order_expire
+    Created on : Mar 17, 2022, 10:16:05 PM
     Author     : ITACHI
 --%>
 
@@ -115,48 +115,62 @@
                         </ol>
 
 
+
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                Danh sách người dùng đã đăng kí
+                                Danh sách hóa đơn sắp hết hạn
                             </div>
                             <div class="card-body">
+
                                 <table id="datatablesSimple">
-                                   
-                                        
                                     <thead>
                                         <tr>
-                                            <th>User Name</th>
-                                            <th>Password</th>
-                                            <th>Full Name</th>
-                                            <th>Gmail User</th>
-                                            <th>Phone Number</th>
+                                            <td>Full Name</td>
+                                            <td>User Name</td>
+                                            <td>Gmail User</td>
+                                            <td>Phone Number</td>
+                                            <td>Account Netflix</td>
+                                            <td>Slot</td>
+                                            <td>Start Date</td>
+                                            <td>Price</td>
+                                            <td>Time</td>
+                                            <td>Type</td>
                                         </tr>
                                     </thead>
-
                                     <tfoot>
                                         <tr>
-                                            <th>User Name</th>
-                                            <th>Password</th>
-                                            <th>Full Name</th>
-                                            <th>Gmail User</th>
-                                            <th>Phone Number</th>
+                                            <td>Full Name</td>
+                                            <td>User Name</td>
+                                            <td>Gmail User</td>
+                                            <td>Phone Number</td>
+                                            <td>Account Netflix</td>
+                                            <td>Slot</td>
+                                            <td>Start Date</td>
+                                            <td>Price</td>
+                                            <td>Time</td>
+                                            <td>Type</td>
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        <c:forEach items="${users}" var="u">
+                                        <c:forEach items="${orders_expire}" var="o">
                                             <tr>
 
 
-                                                <td>${u.getUsername()}</td>
-                                                <td>${u.getPassword()}</td>
-                                                <td>${u.getFullname()}</td>
-                                                <td>${u.getGmail()}</td>
-                                                <td>${u.getSdt()}</td>
-
+                                                <td>${o.fullname}</td>
+                                                <td>${o.username}</td>
+                                                <td>${o.gmail}</td>
+                                                <td>${o.sdt}</td>
+                                                <td>${o.accNetf}</td>
+                                                <td>${o.slot}</td>
+                                                <td>${o.startDate}</td>                                              
+                                                <td>${o.price}</td>
+                                                <td>${o.time}</td>
+                                                <td>${o.type}</td>
                                             </tr>
                                         </c:forEach>
                                     </tbody>
+
 
 
                                 </table>

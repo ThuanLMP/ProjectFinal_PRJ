@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class OrderCart {
     
-    private int id;
+    
     private ArrayList<OrderDetail> details = new ArrayList<>();
     
     public int count()
@@ -38,4 +38,7 @@ public class OrderCart {
         this.details = details;
     }
     
+    public void deleteOrderDetail(OrderDetail order){
+        details.remove(order);
+    }
 }

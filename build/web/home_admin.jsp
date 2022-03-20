@@ -78,14 +78,15 @@
                             <div class="sb-sidenav-menu-heading">Function</div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-list"></i></i></div>
-                                List Orders
+                                List
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
 
-                                    <a class="nav-link" href="admin/orders_active">Orders Active</a>
-                                    <a class="nav-link" href="admin/expire">Orders Expire</a>
+                                    <a class="nav-link" href="order_active">Orders Active</a>
+                                    <a class="nav-link" href="orders_expire">Orders Expire</a>
+                                    <a class="nav-link" href="listacc">List Account</a> 
 
                                 </nav>
                             </div>
@@ -96,19 +97,11 @@
                             </a>
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" >                                   
-                                    <a class="nav-link" href="list_user">List User</a>                                                                                                      
-                                    <a class="nav-link" href="admin/list_account">List Account</a>                                                                                                 
+                                    <a class="nav-link" href="listUser">List User</a>                                                                                                      
+
                                 </nav>
                             </div>
-                            <div class="sb-sidenav-menu-heading">FORM</div>
-                            <a class="nav-link" href="#">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Add new User
-                            </a>
-                            <a class="nav-link" href="#">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Add new Bill
-                            </a>
+
                         </div>
 
                 </nav>
@@ -191,7 +184,10 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-xl-6">
+                            <div class="col-xl-2">
+                                
+                            </div>
+                            <div class="col-xl-8">
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fa-solid fa-circle-plus"></i>
@@ -251,6 +247,7 @@
 
                                 </div>
                             </div>
+                            
 
 
                         </div>
@@ -260,6 +257,7 @@
                                 Danh sách hóa đơn còn hoạt động
                             </div>
                             <div class="card-body">
+
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
@@ -273,7 +271,22 @@
                                             <th>Time</th>
                                             <th>Type</th>
                                         </tr>
+                                    </thead>
 
+                                    <tfoot>
+                                        <tr>
+                                            <th>Full Name</th>
+                                            <th>User Name</th>
+                                            <th>Gmail User</th>
+                                            <th>Phone Number</th>
+                                            <th>Account Netflix</th>
+                                            <th>Slot</th>
+                                            <th>Start Date</th>
+                                            <th>Time</th>
+                                            <th>Type</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
                                         <c:forEach items="${orders}" var="o">
                                             <tr>
 
@@ -288,8 +301,13 @@
                                                 <td>${o.getType()}</td>
                                             </tr>
                                         </c:forEach>
+                                    </tbody>
 
                                 </table>
+
+
+
+
                             </div>
                         </div>
                     </div>

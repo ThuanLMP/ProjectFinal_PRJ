@@ -57,10 +57,13 @@ public class Home_AdminController extends BaseAuthController {
         
         int countOrderExpires = orders3.size();
         int countOrder = orders1.size();
+           
+        UserDBContext db = new UserDBContext();
+        ArrayList<User> users = db.getUsers();
         
         
         HttpSession session = request.getSession();
-        
+        session.setAttribute("users", users);
         session.setAttribute("countOrder",countOrder);
         session.setAttribute("countOrderExpire",countOrderExpires);
         session.setAttribute("orders", orders1);

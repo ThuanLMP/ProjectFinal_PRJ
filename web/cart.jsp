@@ -233,13 +233,19 @@
                                                             <input id="quantity" type="number" value="<%= detail.getMonth()%>"
                                                                    class="form-control quantity-input">
                                                         </div>
-                                                        <div class="col-md-3 quantity">
-                                                            <label>Xóa SP</label>
-                                                            <input  type="submit" value="Delete"/>
 
+                                                        <div class="col-md-3 quantity">
+                                                            <form action="delete_cart" method="get">
+                                                                <input type="hidden" value="<%= detail.getAccount().getType()%>" name="type"/>
+                                                                <label>Xóa SP</label>                                                               
+                                                                <input  type="submit" value="Delete"/>
+                                                            </form>
                                                         </div>
 
+
+
                                                         <div class="col-md-2 price">
+                                                           
                                                             <span><%=detail.getTotal()%> VND</span>
                                                         </div>
                                                     </div>
@@ -267,7 +273,7 @@
                                     </div>
                                     <div>
                                         <form action="cart/payup" method="get">
-                                            
+
                                             <input type="submit" class="btn btn-primary btn-lg btn-block" value="Thanh toán" />
                                         </form>
                                     </div>

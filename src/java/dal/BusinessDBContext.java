@@ -207,9 +207,5 @@ public class BusinessDBContext extends DBContext {
         return total;
     }
 
-    public static void main(String[] args) {
-        BusinessDBContext db = new BusinessDBContext();
-        int total = db.getRevenue30day();
-        System.out.println(total);
-    }
+  
 }

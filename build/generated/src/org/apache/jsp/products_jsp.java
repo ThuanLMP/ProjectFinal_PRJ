@@ -116,11 +116,10 @@ public final class products_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                        <li class=\"nav-item\"><a class=\"nav-link active\" aria-current=\"page\" href=\"./home\">Home</a></li>\n");
       out.write("\n");
       out.write("                    </ul>\n");
-      out.write("                    <form class=\"d-flex\">\n");
+      out.write("                    <form class=\"d-flex\" action=\"products/cart\" method=\"get\">\n");
       out.write("                        <button class=\"btn btn-outline-dark\" type=\"submit\">\n");
       out.write("                            <i class=\"bi-cart-fill me-1\"></i>\n");
       out.write("                            Cart\n");
-      out.write("                            <span class=\"badge bg-dark text-white ms-1 rounded-pill\">0</span>\n");
       out.write("                        </button>\n");
       out.write("                    </form>\n");
       out.write("                </div>\n");

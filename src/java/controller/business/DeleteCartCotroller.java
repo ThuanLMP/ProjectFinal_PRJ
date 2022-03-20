@@ -3,25 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller.bill;
+package controller.business;
 
-import controller.user.BaseAuthController;
-import dal.BillDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import model.Order;
+import model.OrderCart;
+import model.OrderDetail;
 
 /**
  *
  * @author ITACHI
  */
-public class Order_ActiveController extends BaseAuthController {
+public class DeleteCartCotroller extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,11 +31,21 @@ public class Order_ActiveController extends BaseAuthController {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        BillDBContext db = new BillDBContext();
-        ArrayList<Order> orders = db.getOdersActive();
+        String type = request.getParameter("type");       
+        OrderCart orderCart = (OrderCart) request.getSession().getAttribute("orderCart");
         
-        request.setAttribute("orders_active", orders);
-            request.getRequestDispatcher("../view/admin/orders_active.jsp").forward(request, response);
+        System.out.println(orderCart.getDetails().size());
+        for(int i=0;i<orderCart.getDetails().size();i++)
+        {
+            OrderDetail detail = orderCart.getDetails().get(i);
+            if(detail.getAccount().getType().equals(type)){
+                orderCart.deleteOrderDetail(detail);
+            }
+        }
+
+       System.out.println(orderCart.getDetails().size());
+        request.getSession().setAttribute("orderCart", orderCart);      
+        response.sendRedirect("cart.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -51,7 +58,7 @@ public class Order_ActiveController extends BaseAuthController {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void processGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -65,7 +72,7 @@ public class Order_ActiveController extends BaseAuthController {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void processPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }

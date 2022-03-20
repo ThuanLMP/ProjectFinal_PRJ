@@ -5,7 +5,6 @@
  */
 package controller.bill;
 
-import controller.user.BaseAuthController;
 import dal.BillDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -20,9 +19,25 @@ import model.Order;
  *
  * @author ITACHI
  */
-public class ExpireController extends BaseAuthController {
+public class OrdersActiveController extends HttpServlet {
 
-    
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        BillDBContext db = new BillDBContext();
+        ArrayList<Order> orders = db.getOdersActive();
+        
+        request.setAttribute("orders_active", orders);
+        request.getRequestDispatcher("orders_active.jsp").forward(request, response);
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -34,12 +49,9 @@ public class ExpireController extends BaseAuthController {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void processGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        BillDBContext db = new BillDBContext();
-        ArrayList<Order> orders_expire = db.getExpires();
-        request.setAttribute("orders_expire", orders_expire);
-       request.getRequestDispatcher("../view/admin/orders_expire.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**
@@ -51,9 +63,9 @@ public class ExpireController extends BaseAuthController {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void processPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        processRequest(request, response);
     }
 
     /**

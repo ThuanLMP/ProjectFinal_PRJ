@@ -24,7 +24,7 @@ public class BillDBContext extends DBContext {
     public ArrayList<Order> getOders() {
         ArrayList<Order> orders = new ArrayList<>();
         try {
-            String sql = "select u.fullname, b.username,u.gmail,u.sdt,a.gmailacc,a.slot,b.startdate,b.time,a.type\n"
+            String sql = "select u.fullname, b.username,u.gmail,u.sdt,a.gmailacc,a.slot,b.startdate,a.saleprice*b.time as price,b.time,a.type\n"
                     + "from bill b inner join [user] u \n"
                     + "on b.username=u.username\n"
                     + "inner join Account a\n"
@@ -42,6 +42,7 @@ public class BillDBContext extends DBContext {
                 order.setAccNetf(rs.getString("gmailacc"));
                 order.setSlot(rs.getInt("slot"));
                 order.setStartDate(rs.getDate("startdate"));
+                order.setPrice(rs.getInt("price"));
                 order.setTime(rs.getInt("time"));
                 order.setType(rs.getString("type"));
                 orders.add(order);
@@ -68,7 +69,7 @@ public class BillDBContext extends DBContext {
             long millis = System.currentTimeMillis();
             Date date = new java.sql.Date(millis);
 
-            String sql = "SELECT u.fullname, b.username,u.gmail,u.sdt,a.gmailacc,a.slot,b.startdate,b.time,a.type FROM Bill b inner join [user] u\n"
+            String sql = "SELECT u.fullname, b.username,u.gmail,u.sdt,a.gmailacc,a.slot,b.startdate,a.saleprice*b.time as price,b.time,a.type FROM Bill b inner join [user] u\n"
                     + "on b.username=u.username\n"
                     + "inner join Account a\n"
                     + "on b.aid=a.aid\n"
@@ -88,6 +89,7 @@ public class BillDBContext extends DBContext {
                 order.setAccNetf(rs.getString("gmailacc"));
                 order.setSlot(rs.getInt("slot"));
                 order.setStartDate(rs.getDate("startdate"));
+                order.setPrice(rs.getInt("price"));
                 order.setTime(rs.getInt("time"));
                 order.setType(rs.getString("type"));
                 orders.add(order);
@@ -104,7 +106,7 @@ public class BillDBContext extends DBContext {
 
             long millis = System.currentTimeMillis();
             Date date = new java.sql.Date(millis);
-            String sql = "SELECT u.fullname, b.username,u.gmail,u.sdt,a.gmailacc,a.slot,b.startdate,b.time,a.type FROM Bill b inner join [user] u\n"
+            String sql = "SELECT u.fullname, b.username,u.gmail,u.sdt,a.gmailacc,a.slot,b.startdate,a.saleprice*b.time as price,b.time,a.type FROM Bill b inner join [user] u\n"
                     + "on b.username=u.username\n"
                     + "inner join Account a\n"
                     + "on b.aid=a.aid\n"
@@ -122,6 +124,7 @@ public class BillDBContext extends DBContext {
                 order.setAccNetf(rs.getString("gmailacc"));
                 order.setSlot(rs.getInt("slot"));
                 order.setStartDate(rs.getDate("startdate"));
+                order.setPrice(rs.getInt("price"));
                 order.setTime(rs.getInt("time"));
                 order.setType(rs.getString("type"));
                 orders.add(order);
@@ -184,27 +187,20 @@ public class BillDBContext extends DBContext {
             stm.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(BillDBContext.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            if (stm != null) {
-                try {
-                    stm.close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(BillDBContext.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(BillDBContext.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
         }
-
     }
 
     public static void main(String[] args) {
+        BillDBContext db = new BillDBContext();
+        AccountDBContext dba = new AccountDBContext();
+        int n = dba.getMinId("2-END");
+        Account_netf a = dba.getAcc(n);
 
+        int n1 = dba.getMinId("7SHARE");
+        Account_netf a1 = dba.getAcc(n1);
+
+        db.insertOrder(2, "kungfu", a);
+        db.insertOrder(2, "kungfu", a1);
     }
 
 }

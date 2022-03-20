@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package controller.bill;
 
-import dal.AccountDBContext;
+import dal.BillDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ import model.Order;
  *
  * @author ITACHI
  */
-public class HomeController extends HttpServlet {
+public class OrdersExpireController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,14 +32,10 @@ public class HomeController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        AccountDBContext db = new AccountDBContext();
-        ArrayList<Order> orders = db.getOrderExpires();
-        for(Order o : orders){
-            db.updateActiveAcc(o.getAccNetf(),o.getSlot());
-        }
-        
-         request.getRequestDispatcher("/home_user.jsp").forward(request, response);
+        BillDBContext db = new BillDBContext();
+        ArrayList<Order> orders_expire = db.getExpires();
+        request.setAttribute("orders_expire", orders_expire);
+       request.getRequestDispatcher("orders_expire.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
